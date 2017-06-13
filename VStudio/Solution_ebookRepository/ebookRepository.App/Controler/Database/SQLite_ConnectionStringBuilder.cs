@@ -9,16 +9,22 @@ using System.Data.SQLite;
 
 #endregion
 
+#region ---> [NAMESPACE]
+
 namespace ebookRepository.App.Controler.Database
 {
-    #region ---> [Class]
+
+    #region ---> [CLASS]
+
     class SQLite_ConnectionStringBuilder
     {
-        #region ---> [Filds]
+        #region ---> [FILDS]
+
         private SQLiteConnectionStringBuilder _SQLite_ConnectionStringBuilder = new SQLiteConnectionStringBuilder();
+        
         #endregion
 
-        #region ---> [Construtor]
+        #region ---> [CONSTRUTOR]
 
         SQLite_ConnectionStringBuilder()
         {
@@ -27,7 +33,7 @@ namespace ebookRepository.App.Controler.Database
 
         #endregion
 
-        #region ---> [Methods]
+        #region ---> [METHODS]
 
         private void ConfigureDefaultOptions()
         {
@@ -61,7 +67,7 @@ namespace ebookRepository.App.Controler.Database
             set { _SQLite_ConnectionStringBuilder.DataSource = value; }
         }
 
-        public void SET_Passwd(byte[] Password_byteArray = null   , string Password_String = null)
+        public void SET_Passwd(byte[] Password_byteArray = (null), string Password_String = (null))
         {
             if (!(Password_byteArray.Equals(null)))
             {
@@ -85,5 +91,9 @@ namespace ebookRepository.App.Controler.Database
 
         #endregion
     }
+
     #endregion
+
 }
+
+#endregion 

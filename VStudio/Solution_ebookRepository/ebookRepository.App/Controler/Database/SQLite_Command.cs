@@ -9,23 +9,40 @@ using System.Data.SQLite;
 using System.Data;
 
 #endregion
+
+#region ---> [NAMESPACE]
+
 namespace ebookRepository.App.Controler.Database
 {
     #region ---> [Class]
     class SQLite_Command
     {
+        #region ---> [FILDS]
 
         private SQLiteCommand _SQLite_Command = new SQLiteCommand();
+
+        #endregion
+
+        #region ---> [CONSTRUCTOR]
+
         public SQLite_Command()
         {
             this.ConfigureDefaultOptions();
         }
+
+        #endregion
+
+        #region ---> [METHODS]
+
         private void ConfigureDefaultOptions()
         {
             _SQLite_Command.CommandTimeout = (5);
             _SQLite_Command.CommandType = (CommandType.Text);
         }
 
+        #endregion
+
+        #region ---> [GET]
         public SQLiteCommand GET_SQLite_Command
         {
             get
@@ -33,6 +50,16 @@ namespace ebookRepository.App.Controler.Database
                 return _SQLite_Command;
             }
         }
+
+        public SQLiteCommand GET_SQLite_Command_Insert_File()
+        {
+            var StringSQL = ("INSERT INTO [FILE_DOC]([NAME], [FILEBYTE], [FILEDATE]) VALUES (@NAME, @FILEBYTE,@FILEDATE);");
+            _SQLite_Command.CommandText = (StringSQL);
+            return (_SQLite_Command);
+        }
+        #endregion
+
+        #region ---> [SET]
         public int SET_SQLite_Command_CommandTimeout
         {
             set
@@ -48,14 +75,11 @@ namespace ebookRepository.App.Controler.Database
             }
         }
 
+        #endregion
 
-        public SQLiteCommand GET_SQLite_Command_Insert_File(SQLiteConnection SQLite_Connection)
-        {
-            var StringSQL = ("INSERT INTO [FILE_DOC]([NAME], [FILEBYTE], [FILEDATE]) VALUES (@NAME, @FILEBYTE,@FILEDATE);");
-            _SQLite_Command.Connection = (SQLite_Connection);
-            _SQLite_Command.CommandText = (StringSQL);
-            return (_SQLite_Command);
-        }
     }
+
     #endregion
 }
+
+#endregion

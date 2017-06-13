@@ -8,23 +8,29 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 
 #endregion
+#region ---> [NAMESPACE]
 
 namespace ebookRepository.App.Controler.Database
 {
-    #region ---> [Class]
+    #region ---> [CLASS]
+
     class SQLite_Connection
     {
-        #region ---> [Filds]
+        #region ---> [FILDS]
+
         private SQLiteConnection _SQLite_Connection = new SQLiteConnection();
+
         #endregion
 
-        #region ---> [Construtor]
+        #region ---> [CONSTRUCTOR]
+
         public SQLite_Connection()
         {
         }
         #endregion
 
-        #region ---> [Methods]
+        #region ---> [METHODS]
+
         public SQLiteConnection GET_SQLite_Connection(SQLite_ConnectionStringBuilder SQLite_ConnectionStringBuilder)
         {
             var StringBuilder = (SQLite_ConnectionStringBuilder.GET_SQLiteConnectionStringBuilder.ConnectionString);
@@ -34,7 +40,11 @@ namespace ebookRepository.App.Controler.Database
             }
                 return _SQLite_Connection;
         }
+
         #endregion
     }
+
     #endregion
 }
+
+#endregion

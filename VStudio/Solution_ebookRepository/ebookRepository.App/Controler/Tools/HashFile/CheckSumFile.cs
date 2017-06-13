@@ -10,13 +10,13 @@ using System.IO;
 using System.Security.Cryptography;
 
 #endregion
-namespace ebookRepository.App.Controler.Tools
+namespace HashFile
 {
-    #region ---> [Class]
-    class CheckSum
+    #region ---> [CLASS]
+    public class CheckSumFile
     {
 
-        #region ---> [Filds]
+        #region ---> [FILDS]
         public static readonly HashAlgorithm MD5 = new MD5CryptoServiceProvider();
         public static readonly HashAlgorithm SHA1 = new SHA1Managed();
         public static readonly HashAlgorithm SHA256 = new SHA256Managed();
@@ -25,22 +25,32 @@ namespace ebookRepository.App.Controler.Tools
         public static readonly HashAlgorithm RIPEMD160 = new RIPEMD160Managed();
         #endregion
 
-        #region ---> [Construtor]
-        public CheckSum()
+        #region ---> [CONSTRUCTOR]
+
+        public CheckSumFile()
         {
 
         }
+
         #endregion
 
-        #region ---> [Methods]
-        public static string GetHashFromFile(string fileName, HashAlgorithm algorithm)
+        #region ---> [METHODS]
+
+        public static string GetHashFromFile(String File_Full_Patch, HashAlgorithm Hash_Algorithm)
         {
-            using (var stream = new BufferedStream(File.OpenRead(fileName), 100000))
+            using (var stream = new BufferedStream(File.OpenRead(File_Full_Patch), 100000))
             {
-                return BitConverter.ToString(algorithm.ComputeHash(stream)).Replace("-", string.Empty);
+                return BitConverter.ToString(Hash_Algorithm.ComputeHash(stream)).Replace("-", string.Empty);
             }
         }
+
         #endregion
+
+        /*
+         * 
+         * http://azuliadesigns.com/calculate-md5-checksum-file/
+         * 
+         */
     }
     #endregion
 }
