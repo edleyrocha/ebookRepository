@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region ---> [USING]
+
+using System;
 using HashFile;
+
+#endregion
 
 namespace ebookRepository.App.Controler.Tools.HashFile
 {
+
+    #region ---> [CLASS]
+
     public class GetHashCheckSum
     {
+
+        #region ---> [METHODS]
         public static string ReturnMD5(string File_Full_Patch)
         {
       
@@ -41,5 +46,10 @@ namespace ebookRepository.App.Controler.Tools.HashFile
             return (myReturn_String);
         }
 
+        #endregion
+
     }
+
+    #endregion
+
 }

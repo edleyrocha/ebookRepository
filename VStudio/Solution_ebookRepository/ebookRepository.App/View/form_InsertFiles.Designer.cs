@@ -38,9 +38,9 @@
             // 
             // btn_Gravar
             // 
-            this.btn_Gravar.Location = new System.Drawing.Point(347, 45);
+            this.btn_Gravar.Location = new System.Drawing.Point(347, 16);
             this.btn_Gravar.Name = "btn_Gravar";
-            this.btn_Gravar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Gravar.Size = new System.Drawing.Size(75, 25);
             this.btn_Gravar.TabIndex = 0;
             this.btn_Gravar.Text = "&Gravar";
             this.btn_Gravar.UseVisualStyleBackColor = true;
@@ -50,8 +50,9 @@
             // 
             this.textBox_File.Location = new System.Drawing.Point(6, 19);
             this.textBox_File.Name = "textBox_File";
-            this.textBox_File.Size = new System.Drawing.Size(416, 20);
+            this.textBox_File.Size = new System.Drawing.Size(335, 20);
             this.textBox_File.TabIndex = 1;
+            this.textBox_File.TextChanged += new System.EventHandler(this.textBox_File_TextChanged);
             // 
             // groupBox_File
             // 
@@ -59,29 +60,31 @@
             this.groupBox_File.Controls.Add(this.btn_Gravar);
             this.groupBox_File.Location = new System.Drawing.Point(12, 12);
             this.groupBox_File.Name = "groupBox_File";
-            this.groupBox_File.Size = new System.Drawing.Size(428, 75);
+            this.groupBox_File.Size = new System.Drawing.Size(428, 47);
             this.groupBox_File.TabIndex = 2;
             this.groupBox_File.TabStop = false;
             this.groupBox_File.Text = "Documento";
+            this.groupBox_File.Enter += new System.EventHandler(this.groupBox_File_Enter);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 93);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 65);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(428, 245);
+            this.dataGridView1.Size = new System.Drawing.Size(428, 144);
             this.dataGridView1.TabIndex = 3;
             // 
             // form_InsertFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 348);
+            this.ClientSize = new System.Drawing.Size(448, 215);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox_File);
             this.Name = "form_InsertFiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Documentos";
+            this.Load += new System.EventHandler(this.form_InsertFiles_Load);
             this.groupBox_File.ResumeLayout(false);
             this.groupBox_File.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

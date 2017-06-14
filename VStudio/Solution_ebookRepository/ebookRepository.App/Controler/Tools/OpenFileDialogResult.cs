@@ -1,19 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region ---> [USING]
+
+using System;
 using System.Windows.Forms;
+
+#endregion
 
 namespace ebookRepository.App.Controler.Tools
 {
+
+    #region ---> [CLASS]
+
     class OpenFileDialogResult
     {
+
+        #region ---> [METHODS]
+
         public static string FileName()
         {
             var myReturn_String = (string.Empty);
 
-            OpenFileDialog OpenFileDialog1 = new OpenFileDialog();
+            var OpenFileDialog1 = new OpenFileDialog();
             OpenFileDialog1.Filter = ("PDF Files(*.pdf) | *.pdf");
             OpenFileDialog1.InitialDirectory= (@"C:\USER\%username%\Desktop\");
             OpenFileDialog1.Multiselect = false;
@@ -28,5 +34,11 @@ namespace ebookRepository.App.Controler.Tools
             }
              return (myReturn_String);
         }
+
+        #endregion
+
     }
+
+    #endregion
+
 }

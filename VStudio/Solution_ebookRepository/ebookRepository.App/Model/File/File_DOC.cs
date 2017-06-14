@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ebookRepository.App.Model.File
 {
-    class ClassFile_DOC
+    class File_DOC
     {
         private int _COD;
         private string _NAME;

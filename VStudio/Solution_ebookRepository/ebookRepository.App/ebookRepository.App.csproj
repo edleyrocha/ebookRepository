@@ -70,8 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controler\ADO\SQLite_Insert.cs" />
+    <Compile Include="Controler\Tools\Encoder\BytesEncoder.cs" />
     <Compile Include="Controler\Tools\Encoder\BytesString_EncoderDecoder.cs" />
-    <Compile Include="Controler\Tools\Encoder\Encoder.cs" />
+    <Compile Include="Controler\Tools\Encoder\StringEncoder.cs" />
     <Compile Include="Controler\Tools\HashFile\CheckSumFile.cs" />
     <Compile Include="Controler\Database\SQLite_Connection.cs" />
     <Compile Include="Controler\Database\SQLite_ConnectionStringBuilder.cs" />
@@ -80,10 +81,9 @@
     <Compile Include="Controler\Tools\GetFileName.cs" />
     <Compile Include="Controler\Tools\HashFile\GetHashCheckSum.cs" />
     <Compile Include="Controler\Tools\OpenFileDialogResult.cs" />
-    <Compile Include="Controler\Tools\ReadByteFileName.cs" />
-    <Compile Include="Controler\Tools\Encoder\Decoder.cs" />
-    <Compile Include="Model\File\ClassFILE_CHECKSUM.cs" />
-    <Compile Include="Model\File\ClassFile_DOC.cs" />
+    <Compile Include="Controler\Tools\ReadWriteFileName.cs" />
+    <Compile Include="Model\File\File_CheckSum.cs" />
+    <Compile Include="Model\File\File_DOC.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,9 +128,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controler\Entity\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.2\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

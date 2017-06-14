@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ebookRepository.App.Model.File
 {
-    class ClassFILE_CHECKSUM
+    class File_CheckSum
     {
         private int _FILE_DOC_COD;
         private string _CHECKSUM;
