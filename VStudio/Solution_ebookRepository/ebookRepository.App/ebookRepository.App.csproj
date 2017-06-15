@@ -58,6 +58,7 @@
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.105.2\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,18 +71,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controler\ADO\SQLite_Insert.cs" />
+    <Compile Include="Controler\Tools\DebugApp\LogAppMode.cs" />
+    <Compile Include="Controler\Tools\DebugApp\LogAppModeDebug.cs" />
+    <Compile Include="Controler\Tools\DebugApp\LogAppModeRelease.cs" />
+    <Compile Include="Controler\Tools\Dialog\SaveFile_Dialog.cs" />
     <Compile Include="Controler\Tools\Encoder\BytesEncoder.cs" />
     <Compile Include="Controler\Tools\Encoder\BytesString_EncoderDecoder.cs" />
     <Compile Include="Controler\Tools\Encoder\StringEncoder.cs" />
+    <Compile Include="Controler\Tools\Files\GET_FileNameExist.cs" />
+    <Compile Include="Controler\Tools\Files\GET_DirectoryName.cs" />
     <Compile Include="Controler\Tools\HashFile\CheckSumFile.cs" />
     <Compile Include="Controler\Database\SQLite_Connection.cs" />
     <Compile Include="Controler\Database\SQLite_ConnectionStringBuilder.cs" />
     <Compile Include="Controler\Database\SQLite_Command.cs" />
     <Compile Include="Controler\Tools\Encoder\Hex_Encoder.cs" />
-    <Compile Include="Controler\Tools\GetFileName.cs" />
+    <Compile Include="Controler\Tools\Files\GET_FileName.cs" />
     <Compile Include="Controler\Tools\HashFile\GetHashCheckSum.cs" />
-    <Compile Include="Controler\Tools\OpenFileDialogResult.cs" />
-    <Compile Include="Controler\Tools\ReadWriteFileName.cs" />
+    <Compile Include="Controler\Tools\Dialog\OpenFile_Dialog.cs" />
+    <Compile Include="Controler\Tools\Files\ReadWriteFile.cs" />
     <Compile Include="Model\File\File_CheckSum.cs" />
     <Compile Include="Model\File\File_DOC.cs" />
     <Compile Include="Form1.cs">

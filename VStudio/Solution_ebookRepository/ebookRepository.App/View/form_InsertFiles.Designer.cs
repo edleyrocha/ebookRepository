@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_Gravar = new System.Windows.Forms.Button();
+            this.btnProcurar = new System.Windows.Forms.Button();
             this.textBox_File = new System.Windows.Forms.TextBox();
             this.groupBox_File = new System.Windows.Forms.GroupBox();
+            this.btnGravar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox_File.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btn_Gravar
+            // btnProcurar
             // 
-            this.btn_Gravar.Location = new System.Drawing.Point(347, 16);
-            this.btn_Gravar.Name = "btn_Gravar";
-            this.btn_Gravar.Size = new System.Drawing.Size(75, 25);
-            this.btn_Gravar.TabIndex = 0;
-            this.btn_Gravar.Text = "&Gravar";
-            this.btn_Gravar.UseVisualStyleBackColor = true;
-            this.btn_Gravar.Click += new System.EventHandler(this.btn_Gravar_Click);
+            this.btnProcurar.Location = new System.Drawing.Point(347, 16);
+            this.btnProcurar.Name = "btnProcurar";
+            this.btnProcurar.Size = new System.Drawing.Size(75, 25);
+            this.btnProcurar.TabIndex = 0;
+            this.btnProcurar.Text = "&Procurar";
+            this.btnProcurar.UseVisualStyleBackColor = true;
+            this.btnProcurar.Click += new System.EventHandler(this.btn_Gravar_Click);
             // 
             // textBox_File
             // 
@@ -52,24 +53,34 @@
             this.textBox_File.Name = "textBox_File";
             this.textBox_File.Size = new System.Drawing.Size(335, 20);
             this.textBox_File.TabIndex = 1;
-            this.textBox_File.TextChanged += new System.EventHandler(this.textBox_File_TextChanged);
             // 
             // groupBox_File
             // 
+            this.groupBox_File.Controls.Add(this.btnGravar);
             this.groupBox_File.Controls.Add(this.textBox_File);
-            this.groupBox_File.Controls.Add(this.btn_Gravar);
+            this.groupBox_File.Controls.Add(this.btnProcurar);
             this.groupBox_File.Location = new System.Drawing.Point(12, 12);
             this.groupBox_File.Name = "groupBox_File";
-            this.groupBox_File.Size = new System.Drawing.Size(428, 47);
+            this.groupBox_File.Size = new System.Drawing.Size(428, 102);
             this.groupBox_File.TabIndex = 2;
             this.groupBox_File.TabStop = false;
             this.groupBox_File.Text = "Documento";
             this.groupBox_File.Enter += new System.EventHandler(this.groupBox_File_Enter);
             // 
+            // btnGravar
+            // 
+            this.btnGravar.Location = new System.Drawing.Point(347, 48);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(75, 50);
+            this.btnGravar.TabIndex = 2;
+            this.btnGravar.Text = "Gravar";
+            this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 65);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 120);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(428, 144);
             this.dataGridView1.TabIndex = 3;
@@ -78,13 +89,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 215);
+            this.ClientSize = new System.Drawing.Size(452, 271);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox_File);
             this.Name = "form_InsertFiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Documentos";
-            this.Load += new System.EventHandler(this.form_InsertFiles_Load);
             this.groupBox_File.ResumeLayout(false);
             this.groupBox_File.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -94,9 +104,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_Gravar;
+        private System.Windows.Forms.Button btnProcurar;
         private System.Windows.Forms.TextBox textBox_File;
         private System.Windows.Forms.GroupBox groupBox_File;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnGravar;
     }
 }

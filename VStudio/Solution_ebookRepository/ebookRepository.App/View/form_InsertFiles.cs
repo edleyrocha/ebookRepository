@@ -1,17 +1,30 @@
 ﻿using System;
+using System.IO;
+using System.Windows.Forms;
 using System.Collections.Generic;
+using ebookRepository.App.Controler.Tools.Dialog;
+
+using ebookRepository.App.Controler.Tools.DebugApp;
+
+
+
+
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 using ebookRepository.App.Controler.ADO;
 using ebookRepository.App.Controler.Tools;
 using ebookRepository.App.Controler.Tools.Encoder;
 using ebookRepository.App.Controler.Tools.HashFile;
+
+
+
+using ebookRepository.App.Controler.Tools.Files;
+
 
 namespace ebookRepository.App.View
 {
@@ -24,58 +37,54 @@ namespace ebookRepository.App.View
 
         private void btn_Gravar_Click(object sender, EventArgs e)
         {
-            List<object> ListObjects = new List<object>();
-            ListObjects.Add(textBox_File.Text = (OpenFileDialogResult.FileName()));
-           
-            var File_Full_Patch = (textBox_File.Text);
-            var FileName = (GetFileName.GetFileName_From_PatchFile(@File_Full_Patch: File_Full_Patch));
+            LogAppMode.PrintTheLog();
+            LogAppMode.PrintTheLog((sender as Button).Name + " [INICIO]");
+            var File_Full_Patch = (OpenFile_Dialog.GET_File_Full_Patch());
+            this.textBox_File.Text = (File_Full_Patch);
+            LogAppMode.PrintTheLog((sender as Button).Name + " [GET_File_Full_Patch() ---> " + File_Full_Patch + "]",1);
+            LogAppMode.PrintTheLog((sender as Button).Name + " [FINAL]");
+        }
 
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            LogAppMode.PrintTheLog();
+            LogAppMode.PrintTheLog((sender as Button).Name + " [INICIO]");
+            if (!string.IsNullOrEmpty(this.textBox_File.Text))
+            {
+                LogAppMode.PrintTheLog((sender as Button).Name + " [CHECK ---> (!string.IsNullOrEmpty()) --> TRUE]", 1);
+                if (File.Exists(this.textBox_File.Text))
+                {
+                    LogAppMode.PrintTheLog((sender as Button).Name + " [CHECK ---> (File.Exists()) --> TRUE]", 2);
+                    var File_Full_Patch = (this.textBox_File.Text);
+                    List<object> ListObjects = new List<object>();
+                    ListObjects.Add(GET_FileName.GET_FileName_From_PatchFile(@File_Full_Patch: File_Full_Patch));
+                    LogAppMode.PrintTheLog((sender as Button).Name + " [GET_FileName_From_PatchFile ---> " + (string)(ListObjects[0]) + "]", 3);
+                }
+                else
+                {
+                    LogAppMode.PrintTheLog((sender as Button).Name + " [CHECK ---> (File.Exists()) --> FALSE]", 2);
+                }
+            }
+            else
+            {
+                LogAppMode.PrintTheLog((sender as Button).Name + " [CHECK ---> (!string.IsNullOrEmpty()) --> FALSE]", 1);
+            }
+            LogAppMode.PrintTheLog((sender as Button).Name + " [FIM]");
 
+            //if ((string.IsNullOrEmpty(this.textBox_File.Text)) || ((File.Exists(this.textBox_File.Text))))
+            //{
+            //    MessageBox.Show("OK");
 
-            ////var CheckSumMD5 = GetHashCheckSum.ReturnMD5(@File_Full_Patch: File_Full_Patch);
-            ////var CheckSumSHA1 = GetHashCheckSum.ReturnSHA1(@File_Full_Patch: File_Full_Patch);
-            ////var CheckSumSHA256 = GetHashCheckSum.ReturnSHA256(@File_Full_Patch: File_Full_Patch);
-
-
-            
-            //ListObjects.Add(FileName);
-            //ListObjects.Add(CheckSumMD5);
-            //ListObjects.Add(CheckSumSHA1);
-            //ListObjects.Add(CheckSumSHA256);
-
-            MessageBox.Show
-                (
-                    (ListObjects[0].ToString()).Length.ToString() + " " + (ListObjects[0].ToString()) + "\n"
-                   // (ListObjects[2].ToString()).Length.ToString() + " " + (ListObjects[2].ToString()) + "\n" +
-                 //   (ListObjects[3].ToString()).Length.ToString() + " " + (ListObjects[3].ToString()) + "\n"
-                );
-
-            //Object[] Objects_Array = new object[5];
-
-            //Objects_Array[0] = (FileName);
-            //Objects_Array[1] = (CheckSumMD5);
-            //Objects_Array[2] = (CheckSumSHA1);
-            //Objects_Array[3] = (CheckSumSHA256);
-            //MessageBox.Show
-            //    (
-            //        (Objects_Array[1].ToString()).Length.ToString() +" "+ (Objects_Array[1].ToString()) + "\n" +
-            //        (Objects_Array[2].ToString()).Length.ToString() + " " + (Objects_Array[2].ToString()) + "\n" +
-            //        (Objects_Array[3].ToString()).Length.ToString() + " " + (Objects_Array[3].ToString()) + "\n"  
-            //    );
-
+            //    //  this.textBox_File.Focus();
+            //    //ListObjects.Add(GET_FileName.GET_FileName_From_PatchFile(ListObjects[0].ToString())); //1
+            //    //ListObjects.Add(GET_DirectoryName.GET_DirectoryName_From_PatchFile(ListObjects[0].ToString())); //2
+            //    //ListObjects.Add(DateTime.Now); //3
+            //    //ListObjects.Add(ReadWriteFile.File_ReadAllBytes(ListObjects[0].ToString())); //4
+            //    //ListObjects.Add(SaveFile_Dialog.SAVE_File_Full_Patch()); //5
+            //}
         }
 
         private void groupBox_File_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_File_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void form_InsertFiles_Load(object sender, EventArgs e)
         {
 
         }
