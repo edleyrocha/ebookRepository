@@ -31,9 +31,15 @@
             this.btnProcurar = new System.Windows.Forms.Button();
             this.textBox_File = new System.Windows.Forms.TextBox();
             this.groupBox_File = new System.Windows.Forms.GroupBox();
+            this.groupBoxHASH = new System.Windows.Forms.GroupBox();
+            this.btnCheck = new System.Windows.Forms.Button();
+            this.checkBoxMD5 = new System.Windows.Forms.CheckBox();
+            this.checkBoxSHA256 = new System.Windows.Forms.CheckBox();
+            this.checkBoxSHA1 = new System.Windows.Forms.CheckBox();
             this.btnGravar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox_File.SuspendLayout();
+            this.groupBoxHASH.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,6 +62,7 @@
             // 
             // groupBox_File
             // 
+            this.groupBox_File.Controls.Add(this.groupBoxHASH);
             this.groupBox_File.Controls.Add(this.btnGravar);
             this.groupBox_File.Controls.Add(this.textBox_File);
             this.groupBox_File.Controls.Add(this.btnProcurar);
@@ -65,7 +72,62 @@
             this.groupBox_File.TabIndex = 2;
             this.groupBox_File.TabStop = false;
             this.groupBox_File.Text = "Documento";
-            this.groupBox_File.Enter += new System.EventHandler(this.groupBox_File_Enter);
+            // 
+            // groupBoxHASH
+            // 
+            this.groupBoxHASH.Controls.Add(this.btnCheck);
+            this.groupBoxHASH.Controls.Add(this.checkBoxMD5);
+            this.groupBoxHASH.Controls.Add(this.checkBoxSHA256);
+            this.groupBoxHASH.Controls.Add(this.checkBoxSHA1);
+            this.groupBoxHASH.Location = new System.Drawing.Point(6, 48);
+            this.groupBoxHASH.Name = "groupBoxHASH";
+            this.groupBoxHASH.Size = new System.Drawing.Size(335, 48);
+            this.groupBoxHASH.TabIndex = 6;
+            this.groupBoxHASH.TabStop = false;
+            this.groupBoxHASH.Text = "Hash";
+            // 
+            // btnCheck
+            // 
+            this.btnCheck.Location = new System.Drawing.Point(276, 15);
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.Size = new System.Drawing.Size(53, 25);
+            this.btnCheck.TabIndex = 7;
+            this.btnCheck.Text = "Check";
+            this.btnCheck.UseVisualStyleBackColor = true;
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
+            // 
+            // checkBoxMD5
+            // 
+            this.checkBoxMD5.AutoSize = true;
+            this.checkBoxMD5.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxMD5.Name = "checkBoxMD5";
+            this.checkBoxMD5.Size = new System.Drawing.Size(49, 17);
+            this.checkBoxMD5.TabIndex = 3;
+            this.checkBoxMD5.Text = "MD5";
+            this.checkBoxMD5.UseVisualStyleBackColor = true;
+            this.checkBoxMD5.CheckedChanged += new System.EventHandler(this.checkBoxMD5_CheckedChanged);
+            // 
+            // checkBoxSHA256
+            // 
+            this.checkBoxSHA256.AutoSize = true;
+            this.checkBoxSHA256.Location = new System.Drawing.Point(121, 19);
+            this.checkBoxSHA256.Name = "checkBoxSHA256";
+            this.checkBoxSHA256.Size = new System.Drawing.Size(66, 17);
+            this.checkBoxSHA256.TabIndex = 4;
+            this.checkBoxSHA256.Text = "SHA256";
+            this.checkBoxSHA256.UseVisualStyleBackColor = true;
+            this.checkBoxSHA256.CheckedChanged += new System.EventHandler(this.checkBoxSHA256_CheckedChanged);
+            // 
+            // checkBoxSHA1
+            // 
+            this.checkBoxSHA1.AutoSize = true;
+            this.checkBoxSHA1.Location = new System.Drawing.Point(61, 19);
+            this.checkBoxSHA1.Name = "checkBoxSHA1";
+            this.checkBoxSHA1.Size = new System.Drawing.Size(54, 17);
+            this.checkBoxSHA1.TabIndex = 5;
+            this.checkBoxSHA1.Text = "SHA1";
+            this.checkBoxSHA1.UseVisualStyleBackColor = true;
+            this.checkBoxSHA1.CheckedChanged += new System.EventHandler(this.checkBoxSHA1_CheckedChanged);
             // 
             // btnGravar
             // 
@@ -97,6 +159,8 @@
             this.Text = "Cadastro de Documentos";
             this.groupBox_File.ResumeLayout(false);
             this.groupBox_File.PerformLayout();
+            this.groupBoxHASH.ResumeLayout(false);
+            this.groupBoxHASH.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -109,5 +173,10 @@
         private System.Windows.Forms.GroupBox groupBox_File;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnGravar;
+        private System.Windows.Forms.GroupBox groupBoxHASH;
+        private System.Windows.Forms.Button btnCheck;
+        private System.Windows.Forms.CheckBox checkBoxMD5;
+        private System.Windows.Forms.CheckBox checkBoxSHA256;
+        private System.Windows.Forms.CheckBox checkBoxSHA1;
     }
 }

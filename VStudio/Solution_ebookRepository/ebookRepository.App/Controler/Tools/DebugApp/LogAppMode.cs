@@ -19,14 +19,11 @@ namespace ebookRepository.App.Controler.Tools.DebugApp
         {
             if (Enable_Print)
             {
-                if (System.Diagnostics.Debugger.IsAttached)
-                {
-                    LogAppModeDebug.PrintOnDebug(@string_Print: string_Print, @numberSpace: numberSpace);
-                }
-                else if (!System.Diagnostics.Debugger.IsAttached)
-                {
-
-                }
+#if DEBUG
+                LogAppModeDebug.PrintOnDebug(@string_Print: string_Print, @numberSpace: numberSpace);
+#else
+                LogAppModeRelease.PrintOnRelease(@string_Print: string_Print, @numberSpace: numberSpace);
+#endif
             }
 
         }

@@ -1,4 +1,5 @@
-﻿#region ---> [USING]
+﻿
+#region ---> [USING]
 
 using System;
 using System.Collections.Generic;
@@ -21,12 +22,12 @@ namespace ebookRepository.App.Controler.Database
         #region ---> [FILDS]
 
         private SQLiteConnectionStringBuilder _SQLite_ConnectionStringBuilder = new SQLiteConnectionStringBuilder();
-        
+
         #endregion
 
         #region ---> [CONSTRUTOR]
 
-        SQLite_ConnectionStringBuilder()
+        public SQLite_ConnectionStringBuilder()
         {
             this.ConfigureDefaultOptions();
         }
@@ -66,29 +67,32 @@ namespace ebookRepository.App.Controler.Database
         {
             set { _SQLite_ConnectionStringBuilder.DataSource = value; }
         }
-
-        public void SET_Passwd(byte[] Password_byteArray = (null), string Password_String = (null))
-        {
-            if (!(Password_byteArray.Equals(null)))
-            {
-                _SQLite_ConnectionStringBuilder.HexPassword = (Password_byteArray);
-            }
-            else if (!(Password_String.Equals(null)))
-            {
-                _SQLite_ConnectionStringBuilder.Password = (Password_String);
-            };
-        }
-
         public bool SET_FailIfMissing
         {
             set { _SQLite_ConnectionStringBuilder.FailIfMissing = value; }
         }
-
         public bool SET_ReadOnly
         {
             set { _SQLite_ConnectionStringBuilder.ReadOnly = value; }
         }
-
+        public object SET_Password
+        {
+            set
+            {
+                object myValueObject = (value);
+                if (myValueObject is string)
+                {
+                    string myValueString = ((string)(myValueObject));
+                    _SQLite_ConnectionStringBuilder.Password = (myValueString);
+                  
+                }
+                else if (myValueObject is byte[])
+                {
+                    byte[] myValueByteArray = ((byte[])(myValueObject));
+                    _SQLite_ConnectionStringBuilder.HexPassword = (myValueByteArray);
+                }
+            }
+        }
         #endregion
     }
 
@@ -96,4 +100,4 @@ namespace ebookRepository.App.Controler.Database
 
 }
 
-#endregion 
+#endregion

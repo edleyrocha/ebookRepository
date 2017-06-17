@@ -2,7 +2,7 @@
 
 using System;
 using HashFile;
-
+using System.Windows.Forms;
 #endregion
 
 namespace ebookRepository.App.Controler.Tools.HashFile
@@ -10,7 +10,7 @@ namespace ebookRepository.App.Controler.Tools.HashFile
 
     #region ---> [CLASS]
 
-    public class GetHashCheckSum
+    public class HashCheckSum
     {
 
         #region ---> [METHODS]
@@ -20,6 +20,15 @@ namespace ebookRepository.App.Controler.Tools.HashFile
             var myReturn_String = (CheckSumFile.GetHashFromFile(@File_Full_Patch: File_Full_Patch, Hash_Algorithm: CheckSumFile.MD5));
             return (myReturn_String);
         }
+
+        public static string ReturnMD5(string File_Full_Patch, ref ProgressBar ProgressBar)
+        {
+            ProgressBar.Value = 50;
+
+                   var myReturn_String = (CheckSumFile.GetHashFromFile(@File_Full_Patch: File_Full_Patch, Hash_Algorithm: CheckSumFile.MD5));
+            return (myReturn_String);
+        }
+
         public static string ReturnSHA1(string File_Full_Patch)
         {
 

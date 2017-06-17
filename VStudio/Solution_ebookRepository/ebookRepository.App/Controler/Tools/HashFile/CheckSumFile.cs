@@ -2,6 +2,7 @@
 
 using System;
 using System.IO;
+using System.Windows.Forms;
 using System.Security.Cryptography;
 
 #endregion
@@ -26,14 +27,33 @@ namespace HashFile
 
         #region ---> [METHODS]
 
-        public static string GetHashFromFile(String File_Full_Patch, HashAlgorithm Hash_Algorithm)
+        public static string GetHashFromFile(string File_Full_Patch, HashAlgorithm Hash_Algorithm)
         {
-            using (var stream = new BufferedStream(File.OpenRead(File_Full_Patch), 100000))
+            if (File.Exists(File_Full_Patch))
             {
-                return BitConverter.ToString(Hash_Algorithm.ComputeHash(stream)).Replace("-", string.Empty);
+                using (var stream = new BufferedStream(File.OpenRead(File_Full_Patch), 100000))
+                {
+                    return BitConverter.ToString(Hash_Algorithm.ComputeHash(stream)).Replace("-", string.Empty);
+                }
+            }
+            else
+            {
+                return (string.Empty);
             }
         }
 
+        public static string GetHashFromFile2(string File_Full_Patch, HashAlgorithm Hash_Algorithm, ref ProgressBar ProgressBar)
+        {
+            if (File.Exists(File_Full_Patch))
+            {
+
+            }
+            else
+            {
+               
+            }
+            return (string.Empty);
+        }
         #endregion
 
         /*
