@@ -1,16 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SQLite;
+﻿#region ---> [USING]
 
+using System;
 
+#endregion
+
+#region ---> [NAMESPACE]
 
 namespace ebookRepository.App.Controler.Tools.Encoder
 {
-    class BytesString_EncoderDecoder
+
+    #region ---> [CLASS]
+
+    class BytesString_EncoderDecoder : IDisposable
     {
+
+        #region ---> [CONSTRUTORS]
+
+        public void Dispose()
+        {
+            GC.Collect();
+        }
+        ~BytesString_EncoderDecoder()
+        {
+            this.Dispose();
+        }
+
+        #endregion
+
+        #region ---> [METHODS]
+
         public static byte[] GetBytesFromString(string str)
         {
             byte[] bytes = new byte[str.Length * sizeof(char)];
@@ -24,6 +42,14 @@ namespace ebookRepository.App.Controler.Tools.Encoder
             System.Buffer.BlockCopy(bytes, 0, chars, 0, bytes.Length);
             return new string(chars);
         }
+
+        #endregion
+
     }
+
+    #endregion
+
 }
+
+#endregion
 //https://stackoverflow.com/questions/16072709/converting-string-to-byte-array-in-c-sharp

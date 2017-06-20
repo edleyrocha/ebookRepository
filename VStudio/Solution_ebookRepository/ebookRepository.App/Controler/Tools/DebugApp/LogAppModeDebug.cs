@@ -16,7 +16,7 @@ namespace DebugAppMode
 
         #region ---> [METHODS]
 
-        public static void PrintOnDebug(string string_Print, int numberSpace)
+        public void PrintOnDebug(string string_Print, int numberSpace)
         {
             if (!string.IsNullOrEmpty(string_Print))
             {

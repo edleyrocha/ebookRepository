@@ -13,8 +13,21 @@ namespace ebookRepository.App.Controler.Tools.Files
 
     #region ---> [CLASS]
 
-    class Check_FileName
+    class Check_FileName : IDisposable
     {
+
+        #region ---> [CONSTRUTORS]
+
+        public void Dispose()
+        {
+            GC.Collect();
+        }
+        ~Check_FileName()
+        {
+            this.Dispose();
+        }
+
+        #endregion
 
         #region ---> [METHODS]
 

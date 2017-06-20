@@ -15,15 +15,15 @@ namespace ebookRepository.App
         [STAThread]
         static void Main()
         {
-            ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog();
-            ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog("App [INICIO]");
+            new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog();
+            new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog("App [INICIO]");
             new SQLite_Default_Execute().Execute();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
             Application.Run(new ebookRepository.App.View.form_InsertFiles());
-            ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog();
-            ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog("App [FIM]");
+            new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog();
+            new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog("App [FIM]");
         }
     }
 }

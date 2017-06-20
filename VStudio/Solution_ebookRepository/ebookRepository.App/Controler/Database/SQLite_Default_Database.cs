@@ -42,8 +42,8 @@ namespace ebookRepository.App.Controler.Database
             }
             catch (Exception ex)
             {
-                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog("GET_SQLite_Default_DatabaseFILE() ---> [ERRO]", 1);
-                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog(ex.Message, 2);
+                new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog("GET_SQLite_Default_DatabaseFILE() ---> [ERRO]", 1);
+                new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog(ex.Message, 2);
             }
             return (myReturn_String);
         }
@@ -59,8 +59,8 @@ namespace ebookRepository.App.Controler.Database
             }
             catch (Exception ex)
             {
-                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog("GET_SQLite_Default_DatabasePATCH() ---> [ERRO]", 1);
-                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog(ex.Message, 2);
+                new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog("GET_SQLite_Default_DatabasePATCH() ---> [ERRO]", 1);
+                new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog(ex.Message, 2);
             }
             return (myReturn_String);
         }

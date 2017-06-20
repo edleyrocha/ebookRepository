@@ -1,13 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region ---> [USING]
+
+using System;
+
+#endregion
+
+#region ---> [NAMESPACE]
 
 namespace ebookRepository.App.Controler.Tools.Encoder
 {
-    class StringEncoder
+
+    #region ---> [CLASS]
+
+    class StringEncoder : IDisposable
     {
+
+        #region ---> [CONSTRUTORS]
+
+        public void Dispose()
+        {
+            GC.Collect();
+        }
+        ~StringEncoder()
+        {
+            this.Dispose();
+        }
+
+        #endregion
+
+        #region ---> [METHODS]
         public static byte[] EncodeToBytes(string str)
         {
             byte[] bytes = new byte[str.Length * sizeof(char)];
@@ -20,5 +40,12 @@ namespace ebookRepository.App.Controler.Tools.Encoder
             System.Buffer.BlockCopy(bytes, 0, chars, 0, bytes.Length);
             return new string(chars);
         }
+
+        #endregion
     }
+
+    #endregion
+
 }
+
+#endregion

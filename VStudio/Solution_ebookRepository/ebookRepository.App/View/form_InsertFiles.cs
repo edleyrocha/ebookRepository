@@ -68,12 +68,12 @@ namespace ebookRepository.App.View
                 }
                 else
                 {
-                    ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog((sender as Button).Name + " [CHECK ---> (File.Exists()) --> FALSE]", 2);
+                    new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog((sender as Button).Name + " [CHECK ---> (File.Exists()) --> FALSE]", 2);
                 }
             }
             else
             {
-                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog((sender as Button).Name + " [CHECK ---> (!string.IsNullOrEmpty()) --> FALSE]", 1);
+                new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog((sender as Button).Name + " [CHECK ---> (!string.IsNullOrEmpty()) --> FALSE]", 1);
             }
         }
         private void CheckBox_CheckStatus()

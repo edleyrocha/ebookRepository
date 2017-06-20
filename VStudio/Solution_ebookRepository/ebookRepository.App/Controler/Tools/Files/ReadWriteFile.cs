@@ -11,8 +11,21 @@ namespace ebookRepository.App.Controler.Tools.Files
 {
 
     #region ---> [CLASS]
-    class ReadWriteFile
+    class ReadWriteFile : IDisposable
     {
+
+        #region ---> [CONSTRUTORS]
+
+        public void Dispose()
+        {
+            GC.Collect();
+        }
+        ~ReadWriteFile()
+        {
+            this.Dispose();
+        }
+
+        #endregion
 
         #region ---> [METHODS]
 
@@ -38,8 +51,8 @@ namespace ebookRepository.App.Controler.Tools.Files
                 }
                 catch (Exception ex)
                 {
-                    ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog("File_WriteAllBytes() ---> " + "[" + myReturn_bool + "] [ERRO]", 1);
-                    ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog(ex.Message, 2);
+                    new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog("File_WriteAllBytes() ---> " + "[" + myReturn_bool + "] [ERRO]", 1);
+                    new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog(ex.Message, 2);
                     myReturn_bool = (false);
                 }
             }

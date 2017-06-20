@@ -15,6 +15,9 @@ namespace ebookRepository.App.Controler.Tools.Dialog
 
     class OpenFile_Dialog : IDisposable
     {
+
+        #region ---> [CONSTRUTORS]
+
         public void Dispose()
         {
             GC.Collect();
@@ -23,6 +26,8 @@ namespace ebookRepository.App.Controler.Tools.Dialog
         {
             this.Dispose();
         }
+
+        #endregion
 
         #region ---> [METHODS]
 

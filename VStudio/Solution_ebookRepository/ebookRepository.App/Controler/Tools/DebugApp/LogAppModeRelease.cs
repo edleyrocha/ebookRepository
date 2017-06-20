@@ -19,7 +19,7 @@ namespace DebugAppMode
 
         #region ---> [METHODS]
 
-        public static void PrintOnRelease(string string_Print, int numberSpace)
+        public void PrintOnRelease(string string_Print, int numberSpace)
         {
             List<object> ListObjects = new List<object>();
             ListObjects.Add(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);

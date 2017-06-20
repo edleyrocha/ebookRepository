@@ -1,5 +1,6 @@
 ﻿
 #region ---> [USING]
+
 using System;
 using System.IO;
 using System.Data.SQLite;
@@ -66,8 +67,8 @@ namespace ebookRepository.App.Controler.ADO
             }
             catch (Exception ex)
             {
-                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog("SQLite_Default_Execute.Execute() ---> [ERRO]", 1);
-                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog(ex.Message, 2);
+                new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog("SQLite_Default_Execute.Execute() ---> [ERRO]", 1);
+                new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog(ex.Message, 2);
             }
         }
 

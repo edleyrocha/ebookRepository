@@ -13,8 +13,21 @@ namespace ebookRepository.App.Controler.Tools.Files
 
     #region ---> [CLASS]
 
-    class CreateDir
+    class CreateDir : IDisposable
     {
+
+        #region ---> [CONSTRUTORS]
+
+        public void Dispose()
+        {
+            GC.Collect();
+        }
+        ~CreateDir()
+        {
+            this.Dispose();
+        }
+
+        #endregion
 
         #region ---> [METHODS]
 
@@ -35,8 +48,8 @@ namespace ebookRepository.App.Controler.Tools.Files
             }
             catch (Exception ex)
             {
-                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog("CreateNewDir() ---> " + "[" + myReturn_bool + "] [ERRO]", 1);
-                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog(ex.Message, 2);
+                new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog("CreateNewDir() ---> " + "[" + myReturn_bool + "] [ERRO]", 1);
+                new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog(ex.Message, 2);
             }
             return (myReturn_bool);
         }

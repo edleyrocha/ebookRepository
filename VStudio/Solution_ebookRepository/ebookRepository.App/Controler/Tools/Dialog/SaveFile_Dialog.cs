@@ -14,6 +14,9 @@ namespace ebookRepository.App.Controler.Tools.Dialog
 
     class SaveFile_Dialog : IDisposable
     {
+
+        #region ---> [CONSTRUTORS]
+
         public void Dispose()
         {
             GC.Collect();
@@ -22,9 +25,12 @@ namespace ebookRepository.App.Controler.Tools.Dialog
         {
             this.Dispose();
         }
+
+        #endregion
+
         #region ---> [METHODS]
 
-        public static string SAVE_File_Full_Patch()
+        public string SAVE_File_Full_Patch()
         {
             var SaveFileDialog1 = new SaveFileDialog();
             SaveFileDialog1.Title = ("Salvar Arquivo...");
