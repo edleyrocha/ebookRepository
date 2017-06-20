@@ -86,6 +86,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controler\ADO\SQLite_Default_Execute.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Controler\Database\SQLite_Default_Command.cs" />
     <Compile Include="Controler\Database\SQLite_Default_Connection.cs" />
     <Compile Include="Controler\Database\SQLite_Default_Database.cs" />
@@ -101,7 +106,6 @@
     <Compile Include="Controler\Tools\HashFile\CheckSumFile.cs" />
     <Compile Include="Controler\Database\SQLite_Connection.cs" />
     <Compile Include="Controler\Database\SQLite_ConnectionStringBuilder.cs" />
-    <Compile Include="Controler\Database\SQLite_Command.cs" />
     <Compile Include="Controler\Tools\Encoder\Hex_Encoder.cs" />
     <Compile Include="Controler\Tools\Files\Check_FileName.cs" />
     <Compile Include="Controler\Tools\HashFile\HashCheckSum.cs" />
@@ -123,19 +127,14 @@
     <Compile Include="View\form_InsertFiles.Designer.cs">
       <DependentUpon>form_InsertFiles.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\form_InsertFiles.resx">
       <DependentUpon>form_InsertFiles.cs</DependentUpon>
     </EmbeddedResource>

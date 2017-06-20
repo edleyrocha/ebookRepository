@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-///https://stackoverflow.com/questions/16072709/converting-string-to-byte-array-in-c-sharp
+
 namespace ebookRepository.App.Controler.Tools.Encoder
 {
     class BytesEncoder
@@ -28,3 +28,4 @@ namespace ebookRepository.App.Controler.Tools.Encoder
         }
     }
 }
+//https://stackoverflow.com/questions/16072709/converting-string-to-byte-array-in-c-sharp

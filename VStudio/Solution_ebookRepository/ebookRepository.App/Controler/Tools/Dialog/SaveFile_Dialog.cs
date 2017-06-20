@@ -5,14 +5,23 @@ using System.Windows.Forms;
 
 #endregion
 
+#region ---> [NAMESPACE]
+
 namespace ebookRepository.App.Controler.Tools.Dialog
 {
 
     #region ---> [CLASS]
 
-    class SaveFile_Dialog
+    class SaveFile_Dialog : IDisposable
     {
-
+        public void Dispose()
+        {
+            GC.Collect();
+        }
+        ~SaveFile_Dialog()
+        {
+            this.Dispose();
+        }
         #region ---> [METHODS]
 
         public static string SAVE_File_Full_Patch()
@@ -33,3 +42,5 @@ namespace ebookRepository.App.Controler.Tools.Dialog
     #endregion
 
 }
+
+#endregion

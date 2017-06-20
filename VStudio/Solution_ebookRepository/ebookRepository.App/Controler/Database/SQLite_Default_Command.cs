@@ -1,24 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region ---> [USING]
+
+using System;
 using System.Data;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#endregion
+
+#region ---> [NAMESPACE]
 
 namespace ebookRepository.App.Controler.Database
 {
-    class SQLite_Default_Command
+
+    #region ---> [CLASS]
+
+    class SQLite_Default_Command : IDisposable
     {
-        public static SQLiteCommand GET_SQLite_Default_Command()
+
+        #region ---> [CONSTRUTORS]
+
+        public void Dispose()
         {
-            var _SQLiteCommand = new SQLiteCommand();
-            var StringSQL = (Properties.Resources.ResourceManager.GetString("SQL_CREATE_DATABASE_DEFAULT"));
-            _SQLiteCommand.CommandTimeout = (5);
-            _SQLiteCommand.CommandType = (CommandType.Text);
-            _SQLiteCommand.CommandText = (StringSQL);
-            _SQLiteCommand.Connection = (SQLite_Default_Connection.GET_SQLite_Default_Connection());
-            return (_SQLiteCommand);
+            GC.Collect();
         }
+        ~SQLite_Default_Command()
+        {
+            this.Dispose();
+        }
+
+        #endregion
+
+        #region ---> [METHODS]
+
+        public SQLiteCommand GET_SQLite_Default_Command()
+        {
+            using (var _SQLite_Default_Connection = new SQLite_Default_Connection())
+            {
+                var StringSQL = (Properties.Resources.ResourceManager.GetString("SQL_CREATE_DATABASE_DEFAULT"));
+                var _SQLiteCommand = new SQLiteCommand();
+                _SQLiteCommand.Connection = (_SQLite_Default_Connection.GET_SQLite_Default_Connection());
+                _SQLiteCommand.CommandTimeout = (5);
+                _SQLiteCommand.CommandType = (CommandType.Text);
+                _SQLiteCommand.CommandText = (StringSQL);
+                return (_SQLiteCommand);
+            }
+        }
+
+        #endregion
+
     }
+
+    #endregion
+
 }
+
+#endregion

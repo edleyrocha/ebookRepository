@@ -6,32 +6,44 @@ using System.Windows.Forms;
 
 #endregion
 
+#region ---> [NAMESPACE]
+
 namespace ebookRepository.App.Controler.Tools.Dialog
 {
 
     #region ---> [CLASS]
 
-    class OpenFile_Dialog
+    class OpenFile_Dialog : IDisposable
     {
+        public void Dispose()
+        {
+            GC.Collect();
+        }
+        ~OpenFile_Dialog()
+        {
+            this.Dispose();
+        }
 
         #region ---> [METHODS]
 
-        public static string GET_File_Full_Patch()
+        public string GET_OpenFile_Dialog()
         {
-            var OpenFileDialog1 = new OpenFileDialog();
-            OpenFileDialog1.Title = ("Adicionar Arquivo...");
-            OpenFileDialog1.Filter = ("PDF Files(*.pdf) | *.pdf");
-            OpenFileDialog1.InitialDirectory = (@"C:\USER\%username%\Desktop\");
-            OpenFileDialog1.Multiselect = false;
-            OpenFileDialog1.ShowReadOnly = true;
-            OpenFileDialog1.ReadOnlyChecked = true;
-            OpenFileDialog1.ShowHelp = true;
-            OpenFileDialog1.ShowDialog();
-            if (!(File.Exists(OpenFileDialog1.FileName)))
+            using (var _OpenFileDialog = new OpenFileDialog())
             {
-                OpenFileDialog1.FileName = String.Empty;
+                _OpenFileDialog.Title = ("Adicionar Arquivo...");
+                _OpenFileDialog.Filter = ("PDF Files(*.pdf) | *.pdf");
+                _OpenFileDialog.InitialDirectory = (@"C:\USER\%username%\Desktop\");
+                _OpenFileDialog.Multiselect = false;
+                _OpenFileDialog.ShowReadOnly = true;
+                _OpenFileDialog.ReadOnlyChecked = true;
+                _OpenFileDialog.ShowHelp = true;
+                _OpenFileDialog.ShowDialog();
+                if (!File.Exists(_OpenFileDialog.FileName))
+                {
+                    _OpenFileDialog.FileName = (string.Empty);
+                }
+                return (_OpenFileDialog.FileName);
             }
-            return (OpenFileDialog1.FileName);
         }
 
         #endregion
@@ -41,3 +53,5 @@ namespace ebookRepository.App.Controler.Tools.Dialog
     #endregion
 
 }
+
+#endregion

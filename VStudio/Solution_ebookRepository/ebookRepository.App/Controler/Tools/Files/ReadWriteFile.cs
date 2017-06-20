@@ -5,6 +5,8 @@ using System.IO;
 
 #endregion
 
+#region ---> [NAMESPACE]
+
 namespace ebookRepository.App.Controler.Tools.Files
 {
 
@@ -14,7 +16,7 @@ namespace ebookRepository.App.Controler.Tools.Files
 
         #region ---> [METHODS]
 
-        public static byte[] File_ReadAllBytes(String File_Full_Patch)
+        public byte[] File_ReadAllBytes(string File_Full_Patch)
         {
             byte[] bytes = (null);
             if (File.Exists(File_Full_Patch))
@@ -24,10 +26,9 @@ namespace ebookRepository.App.Controler.Tools.Files
             return (bytes);
         }
 
-        public static bool File_WriteAllBytes(String File_Full_Patch, byte[] bytesArray)
+        public bool File_WriteAllBytes(string File_Full_Patch, byte[] bytesArray)
         {
             bool myReturn_bool = (false);
-
             if (!(string.IsNullOrEmpty(File_Full_Patch)))
             {
                 try
@@ -35,13 +36,13 @@ namespace ebookRepository.App.Controler.Tools.Files
                     File.WriteAllBytes(File_Full_Patch, bytesArray);
                     myReturn_bool = (true);
                 }
-                catch // (Exception ex)
+                catch (Exception ex)
                 {
-                    //   ex = null;
+                    ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog("File_WriteAllBytes() ---> " + "[" + myReturn_bool + "] [ERRO]", 1);
+                    ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog(ex.Message, 2);
                     myReturn_bool = (false);
                 }
             }
-
             return (myReturn_bool);
         }
 
@@ -52,3 +53,5 @@ namespace ebookRepository.App.Controler.Tools.Files
     #endregion
 
 }
+
+#endregion

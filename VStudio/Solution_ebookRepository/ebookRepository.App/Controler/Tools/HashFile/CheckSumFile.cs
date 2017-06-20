@@ -2,32 +2,56 @@
 
 using System;
 using System.IO;
-using System.Windows.Forms;
 using System.Security.Cryptography;
 
 #endregion
+
+#region ---> [NAMESPACE]
+
 namespace HashFile
 {
 
     #region ---> [CLASS]
 
-    public class CheckSumFile
+    class CheckSumFile : IDisposable
     {
 
         #region ---> [FILDS]
 
-        public static readonly HashAlgorithm MD5 = new MD5CryptoServiceProvider();
-        public static readonly HashAlgorithm SHA1 = new SHA1Managed();
-        public static readonly HashAlgorithm SHA256 = new SHA256Managed();
-        public static readonly HashAlgorithm SHA384 = new SHA384Managed();
-        public static readonly HashAlgorithm SHA512 = new SHA512Managed();
-        public static readonly HashAlgorithm RIPEMD160 = new RIPEMD160Managed();
+        public readonly HashAlgorithm MD5;
+        public readonly HashAlgorithm SHA1;
+        public readonly HashAlgorithm SHA256;
+        public readonly HashAlgorithm SHA384;
+        public readonly HashAlgorithm SHA512;
+        public readonly HashAlgorithm RIPEMD160;
+
+        #endregion
+
+        #region ---> [CONSTRUTORS]
+
+        public CheckSumFile()
+        {
+            MD5 = new MD5CryptoServiceProvider();
+            SHA1 = new SHA1Managed();
+            SHA256 = new SHA256Managed();
+            SHA384 = new SHA384Managed();
+            SHA512 = new SHA512Managed();
+            RIPEMD160 = new RIPEMD160Managed();
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+        }
+        ~CheckSumFile()
+        {
+            this.Dispose();
+        }
 
         #endregion
 
         #region ---> [METHODS]
 
-        public static string GetHashFromFile(string File_Full_Patch, HashAlgorithm Hash_Algorithm)
+        public string GetHashFromFile(string File_Full_Patch, HashAlgorithm Hash_Algorithm)
         {
             if (File.Exists(File_Full_Patch))
             {
@@ -42,27 +66,22 @@ namespace HashFile
             }
         }
 
-        public static string GetHashFromFile2(string File_Full_Patch, HashAlgorithm Hash_Algorithm, ref ProgressBar ProgressBar)
-        {
-            if (File.Exists(File_Full_Patch))
-            {
-
-            }
-            else
-            {
-               
-            }
-            return (string.Empty);
-        }
         #endregion
+
+        #region ---> [COMENTS]
 
         /*
          * 
          * http://azuliadesigns.com/calculate-md5-checksum-file/
          * 
          */
+
+        #endregion
+
     }
 
     #endregion
 
 }
+
+#endregion

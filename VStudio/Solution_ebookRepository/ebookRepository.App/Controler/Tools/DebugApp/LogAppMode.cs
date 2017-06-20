@@ -1,11 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region ---> [USING]
+
+using System;
 using DebugAppMode;
+
+#endregion
+
+#region ---> [NAMESPACE]
+
 namespace ebookRepository.App.Controler.Tools.DebugApp
 {
+
+    #region ---> [CLASS]
+
     class LogAppMode
     {
 
@@ -15,6 +21,7 @@ namespace ebookRepository.App.Controler.Tools.DebugApp
 
         #endregion
 
+        #region ---> [METHODS]
         public static void PrintTheLog(string string_Print = "", int numberSpace = 0)
         {
             if (Enable_Print)
@@ -28,5 +35,12 @@ namespace ebookRepository.App.Controler.Tools.DebugApp
 
         }
 
+        #endregion
+
     }
+
+    #endregion
+
 }
+
+#endregion

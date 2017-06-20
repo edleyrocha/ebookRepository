@@ -2,10 +2,6 @@
 #region ---> [USING]
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SQLite;
 
 #endregion
@@ -17,19 +13,29 @@ namespace ebookRepository.App.Controler.Database
 
     #region ---> [CLASS]
 
-    class SQLite_ConnectionStringBuilder
+    class SQLite_ConnectionStringBuilder : IDisposable
     {
         #region ---> [FILDS]
 
-        private SQLiteConnectionStringBuilder _SQLite_ConnectionStringBuilder = new SQLiteConnectionStringBuilder();
+        private SQLiteConnectionStringBuilder _SQLite_ConnectionStringBuilder;
 
         #endregion
 
-        #region ---> [CONSTRUTOR]
+        #region ---> [CONSTRUTORS]
 
         public SQLite_ConnectionStringBuilder()
         {
             this.ConfigureDefaultOptions();
+        }
+        
+        public void Dispose()
+        {
+            _SQLite_ConnectionStringBuilder = (null);
+            GC.Collect();
+        }
+        ~SQLite_ConnectionStringBuilder()
+        {
+            this.Dispose();
         }
 
         #endregion
@@ -38,6 +44,7 @@ namespace ebookRepository.App.Controler.Database
 
         private void ConfigureDefaultOptions()
         {
+            _SQLite_ConnectionStringBuilder = new SQLiteConnectionStringBuilder();
             _SQLite_ConnectionStringBuilder.Clear();
             _SQLite_ConnectionStringBuilder.SetDefaults = (true);
             _SQLite_ConnectionStringBuilder.FailIfMissing = (true); // Segurança por Padrao Nao Pemite Criar novo DB
@@ -49,7 +56,7 @@ namespace ebookRepository.App.Controler.Database
             _SQLite_ConnectionStringBuilder.JournalMode = (SQLiteJournalModeEnum.Memory);
             _SQLite_ConnectionStringBuilder.Flags = (SQLiteConnectionFlags.LogAll);
         }
-
+        
         #endregion
 
         #region ---> [GET]
@@ -84,7 +91,7 @@ namespace ebookRepository.App.Controler.Database
                 {
                     string myValueString = ((string)(myValueObject));
                     _SQLite_ConnectionStringBuilder.Password = (myValueString);
-                  
+
                 }
                 else if (myValueObject is byte[])
                 {
@@ -93,7 +100,9 @@ namespace ebookRepository.App.Controler.Database
                 }
             }
         }
+
         #endregion
+
     }
 
     #endregion

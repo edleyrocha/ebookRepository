@@ -1,20 +1,37 @@
-﻿using ebookRepository.App.Controler.Tools.DebugApp;
+﻿#region ---> [USING]
+
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#endregion
+
+#region ---> [NAMESPACE]
 
 namespace ebookRepository.App.Controler.Database
 {
-    class SQLite_Default_Database
+
+    #region ---> [CLASS]
+
+    class SQLite_Default_Database : IDisposable
     {
 
-        public static string GET_SQLite_Default_DatabaseFILE()
+        #region ---> [CONSTRUTORS]
+
+        public void Dispose()
         {
-            LogAppMode.PrintTheLog();
-            LogAppMode.PrintTheLog("GET_SQLite_Default_DatabaseFILE() [INICIO]");
+            GC.Collect();
+        }
+        ~SQLite_Default_Database()
+        {
+            this.Dispose();
+        }
+
+        #endregion
+
+        #region ---> [METHODS]
+
+        public string GET_SQLite_Default_DatabaseFILE()
+        {
             string myReturn_String = (String.Empty);
             try
             {
@@ -22,38 +39,37 @@ namespace ebookRepository.App.Controler.Database
                 string DefaultSQLiteDir = (Properties.Resources.ResourceManager.GetString("SQLiteDatabasePatch"));
                 string FileNameSQLite = ((System.AppDomain.CurrentDomain.FriendlyName) + (".db3"));
                 myReturn_String = (Path.Combine(LocalDirApp, DefaultSQLiteDir, FileNameSQLite));
-                LogAppMode.PrintTheLog("GET_SQLite_Default_DatabaseFILE() [SUCESSO]", 1);
-                LogAppMode.PrintTheLog(myReturn_String, 2);
             }
             catch (Exception ex)
             {
-                LogAppMode.PrintTheLog("GET_SQLite_Default_DatabaseFILE() ---> [ERRO]", 1);
-                LogAppMode.PrintTheLog(ex.Message, 2);
+                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog("GET_SQLite_Default_DatabaseFILE() ---> [ERRO]", 1);
+                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog(ex.Message, 2);
             }
-            LogAppMode.PrintTheLog("GET_SQLite_Default_DatabaseFILE() [FIM]");
             return (myReturn_String);
         }
 
-        public static string GET_SQLite_Default_DatabasePATCH()
+        public string GET_SQLite_Default_DatabasePATCH()
         {
-            LogAppMode.PrintTheLog();
-            LogAppMode.PrintTheLog("GET_SQLite_Default_DatabasePATCH() [INICIO]");
             string myReturn_String = (String.Empty);
             try
             {
                 string LocalDirApp = (System.AppDomain.CurrentDomain.BaseDirectory);
                 string DefaultSQLiteDir = (Properties.Resources.ResourceManager.GetString("SQLiteDatabasePatch"));
                 myReturn_String = (Path.Combine(LocalDirApp, DefaultSQLiteDir));
-                LogAppMode.PrintTheLog("GET_SQLite_Default_DatabasePATCH() [SUCESSO]", 1);
-                LogAppMode.PrintTheLog(myReturn_String, 2);
             }
             catch (Exception ex)
             {
-                LogAppMode.PrintTheLog("GET_SQLite_Default_DatabasePATCH() ---> [ERRO]", 1);
-                LogAppMode.PrintTheLog(ex.Message, 2);
+                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog("GET_SQLite_Default_DatabasePATCH() ---> [ERRO]", 1);
+                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog(ex.Message, 2);
             }
-            LogAppMode.PrintTheLog("GET_SQLite_Default_DatabasePATCH() [FIM]");
             return (myReturn_String);
         }
+
+        #endregion
+
     }
+
+    #endregion
 }
+
+#endregion

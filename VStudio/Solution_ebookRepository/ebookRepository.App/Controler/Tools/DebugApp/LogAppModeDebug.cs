@@ -1,9 +1,10 @@
 ﻿#region ---> [USING]
 
 using System;
-using ebookRepository.App.Controler.Tools.DebugApp;
 
 #endregion
+
+#region ---> [NAMESPACE]
 
 namespace DebugAppMode
 {
@@ -41,6 +42,7 @@ namespace DebugAppMode
 
 }
 
+#endregion
 //else if (!System.Diagnostics.Debugger.IsAttached)
 //{
 //    if (EnablePrintDebug)

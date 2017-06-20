@@ -2,16 +2,22 @@
 
 using System;
 using System.IO;
-using ebookRepository.App.Controler.Tools.DebugApp;
 
 #endregion
+
+#region ---> [NAMESPACE]
+
 namespace ebookRepository.App.Controler.Tools.Files
 {
+
+    #region ---> [CLASS]
+
     class Check_DirectoryName
     {
 
         #region ---> [METHODS]
-        public static void GetDirFile()
+
+        public void GetDirFile()
         {
             System.Collections.Generic.List<object> ListObjectsDiretorios = new System.Collections.Generic.List<object>();
             ListObjectsDiretorios.Add(System.AppDomain.CurrentDomain.BaseDirectory);
@@ -48,10 +54,9 @@ namespace ebookRepository.App.Controler.Tools.Files
             System.Windows.Forms.MessageBox.Show(ListFiles, "Files");
 
         }
-        public static string GET_GetDirectoryName(string File_Full_Patch)
+
+        public string GET_GetDirectoryName(string File_Full_Patch)
         {
-            LogAppMode.PrintTheLog();
-            LogAppMode.PrintTheLog("GET_GetDirectoryName() [INICIO]");
             if (Directory.Exists(File_Full_Patch))
             {
                 File_Full_Patch = String.Format((@"{0}"), (Path.GetDirectoryName(File_Full_Patch)));
@@ -60,12 +65,15 @@ namespace ebookRepository.App.Controler.Tools.Files
             {
                 File_Full_Patch = String.Empty;
             }
-            LogAppMode.PrintTheLog();
-            LogAppMode.PrintTheLog("GET_GetDirectoryName() [FIM]");
             return (File_Full_Patch);
         }
 
         #endregion
 
     }
+
+    #endregion
+
 }
+
+#endregion

@@ -51,7 +51,7 @@
             this.btnProcurar.TabIndex = 0;
             this.btnProcurar.Text = "&Procurar";
             this.btnProcurar.UseVisualStyleBackColor = true;
-            this.btnProcurar.Click += new System.EventHandler(this.btn_Gravar_Click);
+            this.btnProcurar.Click += new System.EventHandler(this.btnProcurar_Click);
             // 
             // textBox_File
             // 

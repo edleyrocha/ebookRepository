@@ -2,10 +2,11 @@
 
 using System;
 using System.IO;
-using ebookRepository.App.Controler.Tools.DebugApp;
 using ebookRepository.App.Controler.Database;
 
 #endregion
+
+#region ---> [NAMESPACE]
 
 namespace ebookRepository.App.Controler.Tools.Files
 {
@@ -17,10 +18,8 @@ namespace ebookRepository.App.Controler.Tools.Files
 
         #region ---> [METHODS]
 
-        private static bool CreateNewDir(string newDir)
+        private bool CreateNewDir(string newDir)
         {
-            LogAppMode.PrintTheLog();
-            LogAppMode.PrintTheLog("CreateNewDir() [INICIO]");
             var myReturn_bool = (false);
             try
             {
@@ -28,8 +27,6 @@ namespace ebookRepository.App.Controler.Tools.Files
                 {
                     Directory.CreateDirectory(newDir);
                     myReturn_bool = (true);
-                    LogAppMode.PrintTheLog("CreateNewDir() ---> " + "[" + myReturn_bool + "] [SUCESSO]", 1);
-                    LogAppMode.PrintTheLog((newDir), 2);
                 }
                 else
                 {
@@ -38,29 +35,26 @@ namespace ebookRepository.App.Controler.Tools.Files
             }
             catch (Exception ex)
             {
-                LogAppMode.PrintTheLog("CreateNewDir() ---> " + "[" + myReturn_bool + "] [ERRO]", 1);
-                LogAppMode.PrintTheLog(ex.Message, 2);
+                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog("CreateNewDir() ---> " + "[" + myReturn_bool + "] [ERRO]", 1);
+                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog(ex.Message, 2);
             }
-            LogAppMode.PrintTheLog("CreateNewDir() [FIM]");
             return (myReturn_bool);
         }
-        public static bool CreateSQLiteLocalDatabaseStore()
+
+        public bool Create_SQLite_Default_DatabasePATCH()
         {
-            LogAppMode.PrintTheLog();
-            LogAppMode.PrintTheLog("CreateSQLiteLocalDatabaseStore() [INICIO]");
             var myReturn_bool = (false);
-
-            string DefaultSQLiteDir = (SQLite_Default_Database.GET_SQLite_Default_DatabasePATCH());
+            string DefaultSQLiteDir = (new SQLite_Default_Database().GET_SQLite_Default_DatabasePATCH());
             myReturn_bool = (CreateNewDir(DefaultSQLiteDir));
-
-            LogAppMode.PrintTheLog("CreateNewDir() ---> " + "[" + myReturn_bool + "] [SUCESSO]", 1);
-
             return (myReturn_bool);
         }
 
         #endregion
+
     }
 
     #endregion
 
 }
+
+#endregion

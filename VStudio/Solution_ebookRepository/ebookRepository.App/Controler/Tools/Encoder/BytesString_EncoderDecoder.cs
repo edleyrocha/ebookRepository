@@ -1,15 +1,11 @@
-﻿#region ---> [USING]
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 
-#endregion
 
-///https://stackoverflow.com/questions/16072709/converting-string-to-byte-array-in-c-sharp
 
 namespace ebookRepository.App.Controler.Tools.Encoder
 {
@@ -30,3 +26,4 @@ namespace ebookRepository.App.Controler.Tools.Encoder
         }
     }
 }
+//https://stackoverflow.com/questions/16072709/converting-string-to-byte-array-in-c-sharp

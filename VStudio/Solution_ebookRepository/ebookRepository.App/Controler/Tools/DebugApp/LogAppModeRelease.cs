@@ -2,16 +2,21 @@
 
 using System;
 using System.IO;
+using System.Windows.Forms;
 using ebookRepository.App.Controler.Tools.DebugApp;
 using System.Collections.Generic;
 
 #endregion
 
+#region ---> [NAMESPACE]
+
 namespace DebugAppMode
 {
     #region ---> [CLASS]
+
     class LogAppModeRelease
     {
+
         #region ---> [METHODS]
 
         public static void PrintOnRelease(string string_Print, int numberSpace)
@@ -46,10 +51,9 @@ namespace DebugAppMode
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
-
-                System.Windows.Forms.MessageBox.Show("Favor Apagar [LOG]", "Erro Log", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                MessageBox.Show("Favor Apagar [LOG] \n" + (ex.Message), "Erro Log", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -57,5 +61,8 @@ namespace DebugAppMode
         #endregion
 
     }
+
     #endregion
 }
+
+#endregion

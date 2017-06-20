@@ -1,53 +1,82 @@
-﻿using ebookRepository.App.Controler.Database;
-using ebookRepository.App.Controler.Tools.DebugApp;
-using ebookRepository.App.Controler.Tools.Files;
+﻿
+#region ---> [USING]
 using System;
-using System.Collections.Generic;
-using System.Data.SQLite;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SQLite;
+using ebookRepository.App.Controler.Database;
+using ebookRepository.App.Controler.Tools.Files;
+
+#endregion
+
+#region ---> [NAMESPACE]
 
 namespace ebookRepository.App.Controler.ADO
 {
-    class SQLite_Default_Execute
+
+    #region ---> [CLASS]
+
+    class SQLite_Default_Execute : IDisposable
     {
 
-        public static void Execute()
-        {
-            var SQLiteDB = SQLite_Default_Database.GET_SQLite_Default_DatabaseFILE();
+        #region ---> [CONSTRUTORS]
 
-            if (!File.Exists(SQLiteDB))
+        public void Dispose()
+        {
+            GC.Collect();
+        }
+        ~SQLite_Default_Execute()
+        {
+            this.Dispose();
+        }
+
+        #endregion
+
+        #region ---> [METHODS]
+
+        public void Execute()
+        {
+            using (var _SQLite_Default_Database = new SQLite_Default_Database())
             {
-                CreateDir.CreateSQLiteLocalDatabaseStore();
-                SQLite_Default_Execute.Execute(@SQLite_Command: SQLite_Default_Command.GET_SQLite_Default_Command());
+                var SQLiteDIR = (_SQLite_Default_Database.GET_SQLite_Default_DatabasePATCH());
+                if (Directory.Exists(SQLiteDIR))
+                {
+                    var SQLiteDB = _SQLite_Default_Database.GET_SQLite_Default_DatabaseFILE();
+                    if (!File.Exists(SQLiteDB))
+                    {
+                        using (var _SQLite_Default_Command = new SQLite_Default_Command())
+                        {
+                            this.Execute(_SQLite_Default_Command.GET_SQLite_Default_Command());
+                        }
+                    }
+                }
+                else
+                {
+                    new CreateDir().Create_SQLite_Default_DatabasePATCH();
+                    this.Execute();
+                };
             }
         }
-        private static void Execute(SQLiteCommand SQLite_Command)
+        private void Execute(SQLiteCommand _SQLiteCommand)
         {
-            LogAppMode.PrintTheLog();
-            LogAppMode.PrintTheLog("SQLite_Default_Execute.Execute() [INICIO]");
             try
             {
-                using (SQLite_Command)
-                {
-                    SQLite_Command.Connection.Open();
-                    SQLite_Command.ExecuteNonQuery();
-                    var COD = SQLite_Command.Connection.LastInsertRowId;
-                    SQLite_Command.Connection.Clone();
-                   
-                    LogAppMode.PrintTheLog("SQLite_Default_Execute.Execute() ---> [SUCESSO]", 1);
-                    LogAppMode.PrintTheLog(SQLite_Command.CommandText.ToString(), 2);
-                    LogAppMode.PrintTheLog("SQLite_Default_Execute.Execute() ---> [COD] ---> : " + (COD.ToString()), 1);
-                }
+                _SQLiteCommand.Connection.Open();
+                _SQLiteCommand.ExecuteNonQuery();
+                _SQLiteCommand.Connection.Close();
             }
             catch (Exception ex)
             {
-                LogAppMode.PrintTheLog("SQLite_Default_Execute.Execute() ---> [ERRO]", 1);
-                LogAppMode.PrintTheLog(ex.Message, 2);
+                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog("SQLite_Default_Execute.Execute() ---> [ERRO]", 1);
+                ebookRepository.App.Controler.Tools.DebugApp.LogAppMode.PrintTheLog(ex.Message, 2);
             }
-            LogAppMode.PrintTheLog("SQLite_Default_Execute.Execute() [FIM]");
         }
+
+        #endregion
+
     }
+
+    #endregion
+
 }
+
+#endregion

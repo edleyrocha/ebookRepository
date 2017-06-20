@@ -13,15 +13,27 @@ namespace ebookRepository.App.Controler.Database
 
     #region ---> [CLASS]
 
-    class SQLite_Connection
+    class SQLite_Connection : IDisposable
     {
+
+        #region ---> [CONSTRUTORS]
+
+        public void Dispose()
+        {
+            GC.Collect();
+        }
+        ~SQLite_Connection()
+        {
+            this.Dispose();
+        }
+
+        #endregion
+
         #region ---> [METHODS]
 
-        public static SQLiteConnection GET_SQLite_Connection(SQLite_ConnectionStringBuilder SQLite_Default_DatabasePatch)
+        public SQLiteConnection GET_SQLite_Connection(SQLite_ConnectionStringBuilder SQLite_Connection_StringBuilder)
         {
-            var _SQLiteConnection = new SQLiteConnection();
-            _SQLiteConnection.ConnectionString = (SQLite_Default_DatabasePatch.GET_SQLiteConnectionStringBuilder.ConnectionString);
-            return (_SQLiteConnection);
+            return (new SQLiteConnection(SQLite_Connection_StringBuilder.GET_SQLiteConnectionStringBuilder.ConnectionString));
         }
 
         #endregion

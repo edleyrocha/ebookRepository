@@ -1,25 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region ---> [USING]
+
+using System;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#endregion
+
+#region ---> [NAMESPACE]
 
 namespace ebookRepository.App.Controler.Database
 {
-    class SQLite_Default_Connection
+    #region ---> [CLASS]
+    class SQLite_Default_Connection : IDisposable
     {
-        public static SQLiteConnection GET_SQLite_Default_Connection()
+
+        #region ---> [CONSTRUTORS]
+
+        public void Dispose()
         {
-            var mySQLite_ConnectionStringBuilder = new SQLite_ConnectionStringBuilder()
+            GC.Collect();
+        }
+        ~SQLite_Default_Connection()
+        {
+            this.Dispose();
+        }
+
+        #endregion
+
+        #region ---> [METHODS]
+
+        public SQLiteConnection GET_SQLite_Default_Connection()
+        {
+            using (var _SQLite_ConnectionStringBuilder = new SQLite_ConnectionStringBuilder()
             {
                 SET_FailIfMissing = (false),
                 SET_Password = ("123456"),
-                SET_DataSource = (SQLite_Default_Database.GET_SQLite_Default_DatabaseFILE())
+                SET_DataSource = (new SQLite_Default_Database().GET_SQLite_Default_DatabaseFILE())
+            })
+            {
+                return (new SQLite_Connection().GET_SQLite_Connection(_SQLite_ConnectionStringBuilder));
             };
-            //var _SQLiteConnection = new SQLiteConnection();
-            //_SQLiteConnection.ConnectionString = (mySQLite_ConnectionStringBuilder.GET_SQLiteConnectionStringBuilder.ConnectionString);
-            return (SQLite_Connection.GET_SQLite_Connection(mySQLite_ConnectionStringBuilder));
         }
+
+        #endregion
+
     }
+
+    #endregion
+
 }
+
+#endregion

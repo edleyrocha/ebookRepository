@@ -2,57 +2,71 @@
 
 using System;
 using HashFile;
-using System.Windows.Forms;
+
 #endregion
+
+#region ---> [NAMESPACE]
 
 namespace ebookRepository.App.Controler.Tools.HashFile
 {
 
     #region ---> [CLASS]
 
-    public class HashCheckSum
+    public class HashCheckSum : IDisposable
     {
 
+        #region ---> [CONSTRUTORS]
+
+        public void Dispose()
+        {
+            GC.Collect();
+        }
+        ~HashCheckSum()
+        {
+            this.Dispose();
+        }
+
+        #endregion
+
         #region ---> [METHODS]
-        public static string ReturnMD5(string File_Full_Patch)
+
+        public string ReturnMD5(string File_Full_Patch)
         {
-      
-            var myReturn_String = (CheckSumFile.GetHashFromFile(@File_Full_Patch: File_Full_Patch, Hash_Algorithm: CheckSumFile.MD5));
-            return (myReturn_String);
+            using (var _CheckSumFile = (new CheckSumFile()))
+            {
+                return (_CheckSumFile.GetHashFromFile(File_Full_Patch, _CheckSumFile.MD5));
+            };
         }
 
-        public static string ReturnMD5(string File_Full_Patch, ref ProgressBar ProgressBar)
+        public string ReturnSHA1(string File_Full_Patch)
         {
-            ProgressBar.Value = 50;
-
-                   var myReturn_String = (CheckSumFile.GetHashFromFile(@File_Full_Patch: File_Full_Patch, Hash_Algorithm: CheckSumFile.MD5));
-            return (myReturn_String);
+            using (var _CheckSumFile = (new CheckSumFile()))
+            {
+                return (_CheckSumFile.GetHashFromFile(File_Full_Patch, _CheckSumFile.SHA1));
+            };
         }
 
-        public static string ReturnSHA1(string File_Full_Patch)
+        public string ReturnSHA256(string File_Full_Patch)
         {
-
-            var myReturn_String = (CheckSumFile.GetHashFromFile(@File_Full_Patch: File_Full_Patch, Hash_Algorithm: CheckSumFile.SHA1));
-            return (myReturn_String);
+            using (var _CheckSumFile = (new CheckSumFile()))
+            {
+                return (_CheckSumFile.GetHashFromFile(File_Full_Patch, _CheckSumFile.SHA256));
+            };
         }
 
-        public static string ReturnSHA256(string File_Full_Patch)
+        public string ReturnSHA384(string File_Full_Patch)
         {
-
-            var myReturn_String = (CheckSumFile.GetHashFromFile(@File_Full_Patch: File_Full_Patch, Hash_Algorithm: CheckSumFile.SHA256));
-            return (myReturn_String);
+            using (var _CheckSumFile = (new CheckSumFile()))
+            {
+                return (_CheckSumFile.GetHashFromFile(File_Full_Patch, _CheckSumFile.SHA384));
+            };
         }
-        public static string ReturnSHA384(string File_Full_Patch)
+        public string ReturnSHA512(string File_Full_Patch)
         {
-
-            var myReturn_String = (CheckSumFile.GetHashFromFile(@File_Full_Patch: File_Full_Patch, Hash_Algorithm: CheckSumFile.SHA384));
-            return (myReturn_String);
-        }
-        public static string ReturnSHA512(string File_Full_Patch)
-        {
-
-            var myReturn_String = (CheckSumFile.GetHashFromFile(@File_Full_Patch: File_Full_Patch, Hash_Algorithm: CheckSumFile.SHA512));
-            return (myReturn_String);
+            using (var _CheckSumFile = (new CheckSumFile()))
+            {
+                return (_CheckSumFile.GetHashFromFile(File_Full_Patch, _CheckSumFile.SHA512));
+            };
         }
 
         #endregion
@@ -62,3 +76,5 @@ namespace ebookRepository.App.Controler.Tools.HashFile
     #endregion
 
 }
+
+#endregion
