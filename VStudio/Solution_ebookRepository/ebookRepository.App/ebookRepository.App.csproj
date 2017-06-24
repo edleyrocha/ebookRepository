@@ -85,7 +85,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controler\ADO\SQLite_Default_Execute.cs" />
+    <Compile Include="Controler\ADO\SQLite_Default_Execute_InsertFile.cs" />
+    <Compile Include="Controler\ADO\SQLite_Default_Execute_CreateDB.cs" />
+    <Compile Include="Controler\Tools\Files\GetFileSizeInBytes.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
       <AutoGen>True</AutoGen>

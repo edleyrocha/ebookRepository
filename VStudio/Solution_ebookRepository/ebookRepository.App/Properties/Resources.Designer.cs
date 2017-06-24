@@ -67,23 +67,36 @@ namespace ebookRepository.App.Properties {
         ///DROP TABLE IF EXISTS [FILE_DOC];
         ///
         ///DROP TABLE IF EXISTS [FILE_DOC];
-        ///CREATE TABLE [FILE_DOC] (
-        ///    [COD]  	    INTEGER         CONSTRAINT [PK_FILE_DOC_COD] PRIMARY KEY ASC ON CONFLICT ROLLBACK AUTOINCREMENT
-        ///                                CONSTRAINT [NN_FILE_DOC_COD] NOT NULL        ON CONFLICT ROLLBACK
-        ///                                CONSTRAINT [UK_FILE_DOC_COD] UNIQUE    [rest of string was truncated]&quot;;.
+        ///CREATE TABLE [FILE_DOC]
+        ///(
+        ///    [F_CODI] INTEGER       CONSTRAINT [PK_FILE_DOC_F_CODI] PRIMARY KEY ASC ON CONFLICT ROLLBACK AUTOINCREMENT
+        ///                           CONSTRAINT [NN_FILE_DOC_F_CODI] NOT NULL        ON CONFLICT ROLLBACK
+        ///                           CONSTRAINT [UK_FILE_DOC_F_CODI] UNIQUE         [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string SQL_CREATE_DATABASE_DEFAULT {
+        public static string DEFAULT_SQL_CREATE_DATABASE {
             get {
-                return ResourceManager.GetString("SQL_CREATE_DATABASE_DEFAULT", resourceCulture);
+                return ResourceManager.GetString("DEFAULT_SQL_CREATE_DATABASE", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to INSERT INTO [FILE_DOC]([F_NAME], [F_EXTE], [F_SIZE], [F_BYTE], [F_TIME]) VALUES (@F_NAME, @F_EXTE, @F_SIZE, @F_BYTE, @F_TIME);.
         /// </summary>
-        public static string SQL_INSERT_FILE_DOC {
+        public static string DEFAULT_SQL_INSERT_FILE_DOC {
             get {
-                return ResourceManager.GetString("SQL_INSERT_FILE_DOC", resourceCulture);
+                return ResourceManager.GetString("DEFAULT_SQL_INSERT_FILE_DOC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO [FILE_CHECKSUM_MD5]   ([FILE_DOC_F_CODI], [CHECKSUM_MD5])    VALUES ((SELECT [F].[F_CODI] FROM [FILE_DOC] AS [F] WHERE [ROWID] = @ROWID), @CHECKSUM_MD5);
+        ///INSERT INTO [FILE_CHECKSUM_SHA1]  ([FILE_DOC_F_CODI], [CHECKSUM_SHA1])   VALUES ((SELECT [F].[F_CODI] FROM [FILE_DOC] AS [F] WHERE [ROWID] = @ROWID), @CHECKSUM_SHA1);
+        ///INSERT INTO [FILE_CHECKSUM_SHA256]([FILE_DOC_F_CODI], [CHECKSUM_SHA256]) VALUES ((SELECT [F].[F_CODI] FROM [FILE_DOC] AS [F] WHERE [ROWID] = @ROWID), @CHECKSUM_SHA256);
+        ///DELETE  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string DEFAULT_SQL_INSERT_FILE_DOC_HASH {
+            get {
+                return ResourceManager.GetString("DEFAULT_SQL_INSERT_FILE_DOC_HASH", resourceCulture);
             }
         }
         

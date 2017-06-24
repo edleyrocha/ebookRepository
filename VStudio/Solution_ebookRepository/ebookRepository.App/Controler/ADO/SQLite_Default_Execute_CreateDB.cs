@@ -16,7 +16,7 @@ namespace ebookRepository.App.Controler.ADO
 
     #region ---> [CLASS]
 
-    class SQLite_Default_Execute : IDisposable
+    class SQLite_Default_Execute_CreateDB : IDisposable
     {
 
         #region ---> [CONSTRUTORS]
@@ -25,7 +25,7 @@ namespace ebookRepository.App.Controler.ADO
         {
             GC.Collect();
         }
-        ~SQLite_Default_Execute()
+        ~SQLite_Default_Execute_CreateDB()
         {
             this.Dispose();
         }
@@ -46,7 +46,7 @@ namespace ebookRepository.App.Controler.ADO
                     {
                         using (var _SQLite_Default_Command = new SQLite_Default_Command())
                         {
-                            this.Execute(_SQLite_Default_Command.GET_SQLite_Default_Command());
+                            this.Execute(_SQLite_Default_Command.GET_SQLite_Default_Command_CreateDatabase());
                         }
                     }
                 }
@@ -62,8 +62,12 @@ namespace ebookRepository.App.Controler.ADO
             try
             {
                 _SQLiteCommand.Connection.Open();
-                _SQLiteCommand.ExecuteNonQuery();
-                _SQLiteCommand.Connection.Close();
+                using (var @BeginTransaction = _SQLiteCommand.Connection.BeginTransaction())
+                {
+                    _SQLiteCommand.ExecuteNonQuery();
+                    @BeginTransaction.Commit();
+                    _SQLiteCommand.Connection.Close();
+                };
             }
             catch (Exception ex)
             {

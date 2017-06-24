@@ -41,20 +41,26 @@ namespace ebookRepository.App.View
                     List<object> ListObjects = new List<object>();
                     ListObjects.Add(new Check_FileName().GET_FileNameWithoutExtension(@File_Full_Patch: File_Full_Patch));
                     ListObjects.Add(new Check_FileName().GET_FileNameExtensions(@File_Full_Patch: File_Full_Patch));
+                    ListObjects.Add(new GetFileSizeInBytes().GetSizeFile(@File_Full_Patch: File_Full_Patch));
                     ListObjects.Add(new ReadWriteFile().File_ReadAllBytes(@File_Full_Patch: File_Full_Patch));
-                    ListObjects.Add(DateTime.Now);
+                    ListObjects.Add(DateTime.Now.ToString());
 
-                    if (checkBoxMD5.Checked)
+                    ListObjects.Add("SEM_HASH_MD5");
+                    if ((checkBoxMD5.Checked) && (!String.IsNullOrEmpty(checkBoxMD5.Tag.ToString())))
                     {
-                        ListObjects.Add(checkBoxMD5.Tag.ToString());
+                        ListObjects[5] = (checkBoxMD5.Tag.ToString());
                     }
-                    if (checkBoxSHA256.Checked)
+                    
+                    ListObjects.Add("SEM_HASH_SHA1");
+                    if ((checkBoxSHA1.Checked) && (!String.IsNullOrEmpty(checkBoxSHA1.Tag.ToString())))
                     {
-                        ListObjects.Add(checkBoxSHA1.Tag.ToString());
+                        ListObjects[6] = (checkBoxSHA1.Tag.ToString());
                     }
-                    if (checkBoxSHA256.Checked)
+
+                    ListObjects.Add("SEM_HASH_SHA256");
+                    if ((checkBoxSHA256.Checked) && (!String.IsNullOrEmpty(checkBoxSHA256.Tag.ToString())))
                     {
-                        ListObjects.Add(checkBoxSHA256.Tag.ToString());
+                        ListObjects[7] = (checkBoxSHA256.Tag.ToString());
                     }
 
                     StringBuilder MessageText = new StringBuilder();
@@ -63,8 +69,14 @@ namespace ebookRepository.App.View
                     {
                         MessageText.AppendLine(string.Format("{0} {1}", ((i).ToString()), (ListObjects[i].ToString())));
                     }
+                    DialogResult dialogResult = MessageBox.Show((MessageText.ToString()), "Insert", MessageBoxButtons.YesNo);
 
-                    MessageBox.Show(MessageText.ToString());
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        new ebookRepository.App.Controler.ADO.SQLite_Default_Execute_InsertFile().Execute(@ListObjects: ListObjects);
+                    };
+
+
                 }
                 else
                 {

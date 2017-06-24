@@ -35,10 +35,10 @@ namespace ebookRepository.App.Controler.Database
             string myReturn_String = (String.Empty);
             try
             {
-                string LocalDirApp = (System.AppDomain.CurrentDomain.BaseDirectory);
-                string DefaultSQLiteDir = (Properties.Resources.ResourceManager.GetString("SQLiteDatabasePatch"));
-                string FileNameSQLite = ((System.AppDomain.CurrentDomain.FriendlyName) + (".db3"));
-                myReturn_String = (Path.Combine(LocalDirApp, DefaultSQLiteDir, FileNameSQLite));
+                string DefaultAppPatch = (System.AppDomain.CurrentDomain.BaseDirectory);
+                string DefaultSQLitePatch = (this.GET_SQLite_Default_DatabasePATCH());
+                string DefaultFileNameSQLite = ((System.AppDomain.CurrentDomain.FriendlyName) + (".db3"));
+                myReturn_String = (Path.Combine(DefaultAppPatch, DefaultSQLitePatch, DefaultFileNameSQLite));
             }
             catch (Exception ex)
             {
@@ -53,9 +53,9 @@ namespace ebookRepository.App.Controler.Database
             string myReturn_String = (String.Empty);
             try
             {
-                string LocalDirApp = (System.AppDomain.CurrentDomain.BaseDirectory);
-                string DefaultSQLiteDir = (Properties.Resources.ResourceManager.GetString("SQLiteDatabasePatch"));
-                myReturn_String = (Path.Combine(LocalDirApp, DefaultSQLiteDir));
+                string DefaultAppPatch = (System.AppDomain.CurrentDomain.BaseDirectory);
+                string DefaultSQLitePatch = (Properties.Resources.ResourceManager.GetString("SQLiteDatabasePatch"));
+                myReturn_String = (Path.Combine(DefaultAppPatch, DefaultSQLitePatch));
             }
             catch (Exception ex)
             {

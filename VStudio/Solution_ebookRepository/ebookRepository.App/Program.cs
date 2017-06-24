@@ -17,7 +17,7 @@ namespace ebookRepository.App
         {
             new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog();
             new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog("App [INICIO]");
-            new SQLite_Default_Execute().Execute();
+            new SQLite_Default_Execute_CreateDB().Execute();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
