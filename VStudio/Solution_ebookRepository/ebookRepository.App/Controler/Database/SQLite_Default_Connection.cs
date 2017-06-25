@@ -35,7 +35,6 @@ namespace ebookRepository.App.Controler.Database
             {
                 SET_FailIfMissing = (false),
                 SET_Password = ("123456"),
-                //SET_Password = (new BytesEncoder().DecodeToBytes("123456")),
                 SET_DataSource = (new SQLite_Default_Database().GET_SQLite_Default_DatabaseFILE())
             })
             {

@@ -61,12 +61,15 @@ namespace ebookRepository.App.Controler.ADO
         {
             try
             {
-                _SQLiteCommand.Connection.Open();
-                using (var @BeginTransaction = _SQLiteCommand.Connection.BeginTransaction())
+                using (_SQLiteCommand)
                 {
-                    _SQLiteCommand.ExecuteNonQuery();
-                    @BeginTransaction.Commit();
-                    _SQLiteCommand.Connection.Close();
+                    _SQLiteCommand.Connection.Open();
+                    using (var @BeginTransaction = _SQLiteCommand.Connection.BeginTransaction())
+                    {
+                        _SQLiteCommand.ExecuteNonQuery();
+                        @BeginTransaction.Commit();
+                        _SQLiteCommand.Connection.Close();
+                    };
                 };
             }
             catch (Exception ex)

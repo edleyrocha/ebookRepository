@@ -51,7 +51,7 @@ namespace ebookRepository.App.Controler.ADO
                             ListObjects.Add(ResultROWID);
                             var ResultInsertHash = this.InsertHash(_SQLite_Default_Command.GET_SQLite_Default_Command_InsertFileHash(), ListObjects);
 
-                            if(ResultInsertHash >= 1)
+                            if (ResultInsertHash >= 1)
                             {
                                 System.Windows.Forms.MessageBox.Show("Sucesso");
                             }
@@ -92,7 +92,7 @@ namespace ebookRepository.App.Controler.ADO
             }
             catch (Exception ex)
             {
-                new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog("SQLite_Default_Execute.Execute() ---> [ERRO]", 1);
+                new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog("SQLite_Default_Execute_InsertFile.Execute() ---> [ERRO]", 1);
                 new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog(ex.Message, 2);
             }
             return (myReturn_Long);
@@ -103,14 +103,14 @@ namespace ebookRepository.App.Controler.ADO
             long myReturn_Long = -5;
             try
             {
-                _SQLiteCommand.Parameters.AddWithValue(("@ROWID"), (long)(ListObjects[8]));
                 _SQLiteCommand.Parameters.AddWithValue(("@CHECKSUM_MD5"), (string)(ListObjects[5]));
                 _SQLiteCommand.Parameters.AddWithValue(("@CHECKSUM_SHA1"), (string)(ListObjects[6]));
                 _SQLiteCommand.Parameters.AddWithValue(("@CHECKSUM_SHA256"), (string)(ListObjects[7]));
+                _SQLiteCommand.Parameters.AddWithValue(("@ROWID"), (long)(ListObjects[8]));
                 _SQLiteCommand.Connection.Open();
                 using (var @BeginTransaction = _SQLiteCommand.Connection.BeginTransaction())
                 {
-                    myReturn_Long =  _SQLiteCommand.ExecuteNonQuery();
+                    myReturn_Long = _SQLiteCommand.ExecuteNonQuery();
                     @BeginTransaction.Commit();
                     _SQLiteCommand.Connection.Close();
                 };
@@ -118,11 +118,12 @@ namespace ebookRepository.App.Controler.ADO
             }
             catch (Exception ex)
             {
-                new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog("SQLite_Default_Execute.Execute() ---> [ERRO]", 1);
+                new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog("SQLite_Default_Execute_InsertFile.Execute() ---> [ERRO]", 1);
                 new ebookRepository.App.Controler.Tools.DebugApp.LogAppMode().PrintTheLog(ex.Message, 2);
             }
             return (myReturn_Long);
         }
+
         #endregion
 
     }

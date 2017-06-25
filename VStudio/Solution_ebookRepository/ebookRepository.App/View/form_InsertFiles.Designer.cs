@@ -44,6 +44,7 @@
             this.F_SIZE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.F_BYTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.F_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox_File.SuspendLayout();
             this.groupBoxHASH.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -87,14 +88,14 @@
             this.groupBoxHASH.Controls.Add(this.checkBoxSHA1);
             this.groupBoxHASH.Location = new System.Drawing.Point(6, 48);
             this.groupBoxHASH.Name = "groupBoxHASH";
-            this.groupBoxHASH.Size = new System.Drawing.Size(335, 48);
+            this.groupBoxHASH.Size = new System.Drawing.Size(259, 48);
             this.groupBoxHASH.TabIndex = 6;
             this.groupBoxHASH.TabStop = false;
             this.groupBoxHASH.Text = "Hash";
             // 
             // btnCheck
             // 
-            this.btnCheck.Location = new System.Drawing.Point(276, 15);
+            this.btnCheck.Location = new System.Drawing.Point(193, 13);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(53, 25);
             this.btnCheck.TabIndex = 7;
@@ -147,6 +148,8 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.F_CODI,
@@ -157,45 +160,64 @@
             this.F_TIME});
             this.dataGridView.Location = new System.Drawing.Point(12, 120);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 25;
-            this.dataGridView.Size = new System.Drawing.Size(428, 144);
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(628, 144);
             this.dataGridView.TabIndex = 3;
             // 
             // F_CODI
             // 
             this.F_CODI.HeaderText = "Codigo";
             this.F_CODI.Name = "F_CODI";
+            this.F_CODI.ReadOnly = true;
             // 
             // F_NAME
             // 
             this.F_NAME.HeaderText = "File Name";
             this.F_NAME.Name = "F_NAME";
+            this.F_NAME.ReadOnly = true;
             // 
             // F_EXTE
             // 
             this.F_EXTE.HeaderText = "Extenção";
             this.F_EXTE.Name = "F_EXTE";
+            this.F_EXTE.ReadOnly = true;
             // 
             // F_SIZE
             // 
             this.F_SIZE.HeaderText = "Tamanho";
             this.F_SIZE.Name = "F_SIZE";
+            this.F_SIZE.ReadOnly = true;
             // 
             // F_BYTE
             // 
             this.F_BYTE.HeaderText = "byte";
             this.F_BYTE.Name = "F_BYTE";
+            this.F_BYTE.ReadOnly = true;
             // 
             // F_TIME
             // 
             this.F_TIME.HeaderText = "DateTime";
             this.F_TIME.Name = "F_TIME";
+            this.F_TIME.ReadOnly = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(480, 79);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // form_InsertFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 271);
+            this.ClientSize = new System.Drawing.Size(653, 269);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.groupBox_File);
             this.Name = "form_InsertFiles";
@@ -228,5 +250,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn F_SIZE;
         private System.Windows.Forms.DataGridViewTextBoxColumn F_BYTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn F_TIME;
+        private System.Windows.Forms.Button button1;
     }
 }

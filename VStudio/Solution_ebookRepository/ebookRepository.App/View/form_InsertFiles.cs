@@ -152,5 +152,11 @@ namespace ebookRepository.App.View
         {
             Check_Hash();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+//          dataGridView.ReadOnly = (true);
+            dataGridView.Rows.Add("aaa");
+        }
     }
 }
