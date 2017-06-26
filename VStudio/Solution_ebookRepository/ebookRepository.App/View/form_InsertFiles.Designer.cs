@@ -40,14 +40,26 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.F_CODI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.F_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.F_EXTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.F_SIZE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.F_BYTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.F_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.MD5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SHA1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SHA256 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnListar = new System.Windows.Forms.Button();
+            this.textBox_Find = new System.Windows.Forms.TextBox();
+            this.groupBox_Find = new System.Windows.Forms.GroupBox();
+            this.listView_Base = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox_File.SuspendLayout();
             this.groupBoxHASH.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.groupBox_Find.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnProcurar
@@ -154,16 +166,17 @@
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.F_CODI,
             this.F_NAME,
-            this.F_EXTE,
             this.F_SIZE,
-            this.F_BYTE,
-            this.F_TIME});
+            this.F_TIME,
+            this.MD5,
+            this.SHA1,
+            this.SHA256});
             this.dataGridView.Location = new System.Drawing.Point(12, 120);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 25;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(628, 144);
+            this.dataGridView.Size = new System.Drawing.Size(634, 144);
             this.dataGridView.TabIndex = 3;
             // 
             // F_CODI
@@ -178,23 +191,11 @@
             this.F_NAME.Name = "F_NAME";
             this.F_NAME.ReadOnly = true;
             // 
-            // F_EXTE
-            // 
-            this.F_EXTE.HeaderText = "Extenção";
-            this.F_EXTE.Name = "F_EXTE";
-            this.F_EXTE.ReadOnly = true;
-            // 
             // F_SIZE
             // 
             this.F_SIZE.HeaderText = "Tamanho";
             this.F_SIZE.Name = "F_SIZE";
             this.F_SIZE.ReadOnly = true;
-            // 
-            // F_BYTE
-            // 
-            this.F_BYTE.HeaderText = "byte";
-            this.F_BYTE.Name = "F_BYTE";
-            this.F_BYTE.ReadOnly = true;
             // 
             // F_TIME
             // 
@@ -202,22 +203,106 @@
             this.F_TIME.Name = "F_TIME";
             this.F_TIME.ReadOnly = true;
             // 
-            // button1
+            // MD5
             // 
-            this.button1.Location = new System.Drawing.Point(480, 79);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.MD5.HeaderText = "MD5";
+            this.MD5.Name = "MD5";
+            this.MD5.ReadOnly = true;
+            // 
+            // SHA1
+            // 
+            this.SHA1.HeaderText = "SHA1";
+            this.SHA1.Name = "SHA1";
+            this.SHA1.ReadOnly = true;
+            // 
+            // SHA256
+            // 
+            this.SHA256.HeaderText = "SHA256";
+            this.SHA256.Name = "SHA256";
+            this.SHA256.ReadOnly = true;
+            // 
+            // btnListar
+            // 
+            this.btnListar.Location = new System.Drawing.Point(119, 44);
+            this.btnListar.Name = "btnListar";
+            this.btnListar.Size = new System.Drawing.Size(75, 50);
+            this.btnListar.TabIndex = 4;
+            this.btnListar.Text = "Listar";
+            this.btnListar.UseVisualStyleBackColor = true;
+            this.btnListar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox_Find
+            // 
+            this.textBox_Find.Location = new System.Drawing.Point(10, 19);
+            this.textBox_Find.Name = "textBox_Find";
+            this.textBox_Find.Size = new System.Drawing.Size(184, 20);
+            this.textBox_Find.TabIndex = 5;
+            // 
+            // groupBox_Find
+            // 
+            this.groupBox_Find.Controls.Add(this.textBox_Find);
+            this.groupBox_Find.Controls.Add(this.btnListar);
+            this.groupBox_Find.Location = new System.Drawing.Point(446, 14);
+            this.groupBox_Find.Name = "groupBox_Find";
+            this.groupBox_Find.Size = new System.Drawing.Size(200, 100);
+            this.groupBox_Find.TabIndex = 6;
+            this.groupBox_Find.TabStop = false;
+            this.groupBox_Find.Text = "Procurar";
+            // 
+            // listView_Base
+            // 
+            this.listView_Base.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8});
+            this.listView_Base.GridLines = true;
+            this.listView_Base.Location = new System.Drawing.Point(12, 270);
+            this.listView_Base.Name = "listView_Base";
+            this.listView_Base.Size = new System.Drawing.Size(634, 182);
+            this.listView_Base.TabIndex = 7;
+            this.listView_Base.UseCompatibleStateImageBehavior = false;
+            this.listView_Base.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Codigo";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Nome";
+            this.columnHeader2.Width = 141;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Tamanho";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Data";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "MD5";
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "SHA1";
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "SHA256";
             // 
             // form_InsertFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(653, 269);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(654, 464);
+            this.Controls.Add(this.listView_Base);
+            this.Controls.Add(this.groupBox_Find);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.groupBox_File);
             this.Name = "form_InsertFiles";
@@ -228,6 +313,8 @@
             this.groupBoxHASH.ResumeLayout(false);
             this.groupBoxHASH.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.groupBox_Find.ResumeLayout(false);
+            this.groupBox_Find.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -244,12 +331,23 @@
         private System.Windows.Forms.CheckBox checkBoxMD5;
         private System.Windows.Forms.CheckBox checkBoxSHA256;
         private System.Windows.Forms.CheckBox checkBoxSHA1;
+        private System.Windows.Forms.Button btnListar;
+        private System.Windows.Forms.TextBox textBox_Find;
+        private System.Windows.Forms.GroupBox groupBox_Find;
+        private System.Windows.Forms.ListView listView_Base;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.DataGridViewTextBoxColumn F_CODI;
         private System.Windows.Forms.DataGridViewTextBoxColumn F_NAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn F_EXTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn F_SIZE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn F_BYTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn F_TIME;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MD5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SHA1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SHA256;
     }
 }

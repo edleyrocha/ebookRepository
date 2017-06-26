@@ -6,8 +6,7 @@ using System.Collections.Generic;
 using ebookRepository.App.Controler.Tools.Dialog;
 using ebookRepository.App.Controler.Tools.Files;
 using ebookRepository.App.Controler.Tools.HashFile;
-
-
+using System.Data;
 
 namespace ebookRepository.App.View
 {
@@ -50,7 +49,7 @@ namespace ebookRepository.App.View
                     {
                         ListObjects[5] = (checkBoxMD5.Tag.ToString());
                     }
-                    
+
                     ListObjects.Add("SEM_HASH_SHA1");
                     if ((checkBoxSHA1.Checked) && (!String.IsNullOrEmpty(checkBoxSHA1.Tag.ToString())))
                     {
@@ -155,8 +154,43 @@ namespace ebookRepository.App.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-//          dataGridView.ReadOnly = (true);
-            dataGridView.Rows.Add("aaa");
+            var FileName = (textBox_Find.Text);
+            using (var _DataTable = new ebookRepository.App.Controler.ADO.SQLite_Default_Execute_GetDatasetFiles().Execute())
+            {
+                dataGridView.Rows.Clear();
+                for (int i = 0; i < _DataTable.Rows.Count; i++)
+                {
+                    var F_CODI = _DataTable.Rows[i].ItemArray[0].ToString();
+                    var F_NAME = _DataTable.Rows[i].ItemArray[1].ToString();
+                    var F_SIZE = _DataTable.Rows[i].ItemArray[2].ToString();
+                    var F_TIME = _DataTable.Rows[i].ItemArray[3].ToString();
+                    var MD5 = _DataTable.Rows[i].ItemArray[4].ToString();
+                    var SHA1 = _DataTable.Rows[i].ItemArray[5].ToString();
+                    var SHA256 = _DataTable.Rows[i].ItemArray[6].ToString();
+                    dataGridView.Rows.Add(F_CODI, F_NAME, F_SIZE, F_TIME, MD5, SHA1, SHA256);
+                }
+
+            }
+            using (var _SQLiteDataReader = new ebookRepository.App.Controler.ADO.SQLite_Default_Execute_GetDatasetFiles().Execute(FileName))
+            {
+                listView_Base.Items.Clear();
+                while (_SQLiteDataReader.Read())
+                {
+                    ListViewItem list = new ListViewItem(_SQLiteDataReader[0].ToString());
+                    list.SubItems.Add(_SQLiteDataReader[1].ToString());
+                    list.SubItems.Add(_SQLiteDataReader[2].ToString());
+                    list.SubItems.Add(_SQLiteDataReader[3].ToString());
+                    list.SubItems.Add(_SQLiteDataReader[4].ToString());
+                    list.SubItems.Add(_SQLiteDataReader[5].ToString());
+                    list.SubItems.Add(_SQLiteDataReader[6].ToString());
+                    listView_Base.Items.AddRange(new ListViewItem[] { list });
+                }
+            }
+
+
+
+
         }
     }
 }
+

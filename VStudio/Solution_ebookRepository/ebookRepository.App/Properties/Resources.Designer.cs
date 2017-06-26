@@ -101,6 +101,24 @@ namespace ebookRepository.App.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT [F].[F_CODI], [F].[F_NAME] || [F].[F_EXTE] AS [F_FILE], [F].[F_SIZE], [F].[F_TIME],[MD5].[CHECKSUM_MD5] AS [MD5], [SHA1].[CHECKSUM_SHA1] AS [SHA1], [SHA256].[CHECKSUM_SHA256] AS [SHA256]  
+        ///FROM [FILE_DOC] AS [F]
+        ///LEFT JOIN [FILE_CHECKSUM_MD5] AS [MD5]
+        ///ON [F].[F_CODI] = [MD5].[FILE_DOC_F_CODI]
+        ///LEFT JOIN [FILE_CHECKSUM_SHA1] AS [SHA1] 
+        ///ON [F].[F_CODI] = [SHA1].[FILE_DOC_F_CODI]
+        ///LEFT JOIN [FILE_CHECKSUM_SHA256] AS [SHA256] 
+        ///ON [F].[F_CODI] = [SHA256].[FILE_DOC_F_CODI]
+        ///WHERE [F].[F_NAME] 
+        ///LIKE (&apos; [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string DEFAULT_SQL_READ_FILE_DOC_HASH {
+            get {
+                return ResourceManager.GetString("DEFAULT_SQL_READ_FILE_DOC_HASH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LocalDataStore.
         /// </summary>
         public static string SQLiteDatabasePatch {

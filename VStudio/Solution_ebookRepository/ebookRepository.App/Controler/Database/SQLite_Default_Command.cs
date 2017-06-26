@@ -33,17 +33,34 @@ namespace ebookRepository.App.Controler.Database
 
         public SQLiteCommand GET_SQLite_Default_Command_CreateDatabase()
         {
-            return (new SQLite_Command().GET_SQLite_Command(@commandName:"DEFAULT_SQL_CREATE_DATABASE"));
+            return (this.GET_SQLite_Command(@commandName: "DEFAULT_SQL_CREATE_DATABASE"));
         }
 
         public SQLiteCommand GET_SQLite_Default_Command_InsertFile()
         {
-            return (new SQLite_Command().GET_SQLite_Command(@commandName: "DEFAULT_SQL_INSERT_FILE_DOC"));
+            return (this.GET_SQLite_Command(@commandName: "DEFAULT_SQL_INSERT_FILE_DOC"));
         }
 
         public SQLiteCommand GET_SQLite_Default_Command_InsertFileHash()
         {
-            return (new SQLite_Command().GET_SQLite_Command(@commandName: "DEFAULT_SQL_INSERT_FILE_DOC_HASH"));
+            return (this.GET_SQLite_Command(@commandName: "DEFAULT_SQL_INSERT_FILE_DOC_HASH"));
+        }
+
+        public SQLiteCommand GET_SQLite_Default_Command_ReadFileHash()
+        {
+            return (this.GET_SQLite_Command(@commandName: "DEFAULT_SQL_READ_FILE_DOC_HASH"));
+        }
+
+        public SQLiteCommand GET_SQLite_Command(string commandName)
+        {
+            using (var _SQLite_Default_Connection = new SQLite_Default_Connection())
+            {
+                using (var _SQLite_Command = new SQLite_Command())
+                {
+                    var myReturn_SQLiteCommand = _SQLite_Command.GET_SQLite_Command(@commandName: commandName, @sqliteConnection: _SQLite_Default_Connection.GET_SQLite_Default_Connection());
+                    return (myReturn_SQLiteCommand);
+                }
+            }
         }
         #endregion
 
